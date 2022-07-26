@@ -27,7 +27,7 @@ Route::get('/', function () {
 });
 
 Route::resource('companies', CompaniesController::class)
-->middleware('auth:admin')->except(['show']);
+->middleware('auth:admin');
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');

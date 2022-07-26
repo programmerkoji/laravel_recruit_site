@@ -83,7 +83,7 @@
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <div class="flex items-center justify-center gap-4">
-                                        <a href="#" class="py-1 px-2 border border-indigo-600 rounded-full text-indigo-600 hover:text-indigo-900">詳細</a>
+                                        <a href="{{ route('admin.companies.show',  ['company' => $company->id]) }}" class="py-1 px-2 border border-indigo-600 rounded-full text-indigo-600 hover:text-indigo-900">詳細</a>
                                         <a href="#" class="py-1 px-2 border border-green-600 rounded-full text-green-600 hover:text-green-900">編集</a>
                                         <a href="#" class="py-1 px-2 border border-red-600 rounded-full text-red-600 hover:text-red-900">削除</a>
                                     </div>
