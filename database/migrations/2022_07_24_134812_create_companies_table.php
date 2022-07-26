@@ -25,6 +25,7 @@ class CreateCompaniesTable extends Migration
             $table->string('stuff_name');
             $table->unsignedInteger('capital');
             $table->unsignedTinyInteger('employee_number');
+            $table->boolean('is_publish');
             $table->text('note');
             $table->timestamps();
         });
