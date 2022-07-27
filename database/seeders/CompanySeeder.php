@@ -55,7 +55,7 @@ class CompanySeeder extends Seeder
                 'capital' => '1000000',
                 'employee_number' => '5',
                 'is_publish' => true,
-                'note' => 'テスト投稿です。03',
+                'note' => null,
             ],
         ]);
     }

@@ -20,13 +20,13 @@ class CreateCompaniesTable extends Migration
             $table->string('address');
             $table->string('tel', 16);
             $table->string('email');
-            $table->date('foundation');
-            $table->string('ceo_name');
-            $table->string('stuff_name');
-            $table->unsignedInteger('capital');
-            $table->unsignedTinyInteger('employee_number');
             $table->boolean('is_publish');
-            $table->text('note');
+            $table->string('ceo_name');
+            $table->string('stuff_name')->nullable();
+            $table->date('foundation')->nullable();
+            $table->unsignedInteger('capital')->nullable();
+            $table->unsignedTinyInteger('employee_number')->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

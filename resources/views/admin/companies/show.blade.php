@@ -33,6 +33,16 @@
             </li>
             <li class="p-4">
                 <dl class="flex items-center">
+                    <dt class="w-1/4 pl-1 font-bold">掲載状況</dt>
+                @if ($companyInfo->is_publish)
+                    <dd class="flex-auto">掲載中</dd>
+                @else
+                    <dd class="flex-auto">非掲載</dd>
+                @endif
+                </dl>
+            </li>
+            <li class="p-4">
+                <dl class="flex items-center">
                     <dt class="w-1/4 pl-1 font-bold">代表者名</dt>
                     <dd class="flex-auto">{{ $companyInfo->ceo_name }}</dd>
                 </dl>
@@ -52,23 +62,13 @@
             <li class="p-4">
                 <dl class="flex items-center">
                     <dt class="w-1/4 pl-1 font-bold">資本金</dt>
-                    <dd class="flex-auto">{{ $companyInfo->capital }}</dd>
+                    <dd class="flex-auto">{{ number_format($companyInfo->capital) }}円</dd>
                 </dl>
             </li>
             <li class="p-4">
                 <dl class="flex items-center">
                     <dt class="w-1/4 pl-1 font-bold">従業員数</dt>
-                    <dd class="flex-auto">{{ $companyInfo->employee_number }}</dd>
-                </dl>
-            </li>
-            <li class="p-4">
-                <dl class="flex items-center">
-                    <dt class="w-1/4 pl-1 font-bold">掲載状況</dt>
-                @if ($companyInfo->is_publish)
-                    <dd class="flex-auto">掲載中</dd>
-                @else
-                    <dd class="flex-auto">掲載中</dd>
-                @endif
+                    <dd class="flex-auto">{{ $companyInfo->employee_number }}人</dd>
                 </dl>
             </li>
             <li class="p-4">

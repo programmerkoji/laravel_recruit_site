@@ -15,6 +15,7 @@ class Company extends Model
         'address',
         'tel',
         'email',
+        'is_publish',
         'foundation',
         'ceo_name',
         'stuff_name',

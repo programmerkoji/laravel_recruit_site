@@ -66,7 +66,9 @@ class CompaniesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $companyInfo = Company::findOrFail($id);
+
+        return view('admin.companies.edit', compact('companyInfo'));
     }
 
     /**
@@ -78,7 +80,19 @@ class CompaniesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:50'],
+            'post_code' => ['required', 'string', 'max:12'],
+            'address' => ['required', 'string'],
+            'tel' => ['required', 'string', 'regex:/^0[-0-9]{11,12}$/', 'max:16'],
+            'email' => ['required', 'string', 'email'],
+            'is_publish' => ['required'],
+        ]);
+
+        $companyInfo = Company::findOrFail($id);
+        $companyInfo->update($request->all());
+
+        return redirect()->route('admin.companies.index');
     }
 
     /**
