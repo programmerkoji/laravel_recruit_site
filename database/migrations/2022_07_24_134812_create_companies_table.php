@@ -20,8 +20,7 @@ class CreateCompaniesTable extends Migration
             $table->string('address');
             $table->string('tel', 16);
             $table->string('email');
-            $table->boolean('is_publish');
-            $table->string('ceo_name');
+            $table->string('ceo_name')->nullable();
             $table->string('stuff_name')->nullable();
             $table->date('foundation')->nullable();
             $table->unsignedInteger('capital')->nullable();

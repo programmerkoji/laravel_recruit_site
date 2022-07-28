@@ -16,10 +16,10 @@ class CompaniesController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+    */
     public function index()
     {
-        $companies = Company::all();
+        $companies = Company::select('id', 'name', 'address', 'stuff_name')->get();
 
         return view('admin.companies.index', compact('companies'));
     }
@@ -31,7 +31,7 @@ class CompaniesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.companies.create');
     }
 
     /**
@@ -42,7 +42,17 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:50'],
+            'post_code' => ['required', 'string', 'max:12'],
+            'address' => ['required', 'string'],
+            'tel' => ['required', 'string', 'regex:/^0[-0-9]{11,12}$/', 'max:16'],
+            'email' => ['required', 'string', 'email'],
+        ]);
+
+        Company::create($request->all());
+
+        return redirect()->route('admin.companies.index');
     }
 
     /**
@@ -86,7 +96,6 @@ class CompaniesController extends Controller
             'address' => ['required', 'string'],
             'tel' => ['required', 'string', 'regex:/^0[-0-9]{11,12}$/', 'max:16'],
             'email' => ['required', 'string', 'email'],
-            'is_publish' => ['required'],
         ]);
 
         $companyInfo = Company::findOrFail($id);
