@@ -26,7 +26,6 @@ class CompanySeeder extends Seeder
                 'stuff_name' => 'テスト担当',
                 'capital' => '10000000',
                 'employee_number' => '30',
-                'is_publish' => true,
                 'note' => 'テスト投稿です。',
             ],
             [
@@ -40,7 +39,6 @@ class CompanySeeder extends Seeder
                 'stuff_name' => 'テスト担当02',
                 'capital' => '10000000',
                 'employee_number' => '10',
-                'is_publish' => false,
                 'note' => 'テスト投稿です。02',
             ],
             [
@@ -54,7 +52,6 @@ class CompanySeeder extends Seeder
                 'stuff_name' => 'テスト担当03',
                 'capital' => '1000000',
                 'employee_number' => '5',
-                'is_publish' => true,
                 'note' => null,
             ],
         ]);

@@ -16,11 +16,14 @@
                         <div class=" relative ">
                             <input type="text" id="&quot;form-subscribe-Filter" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="name"/>
                         </div>
-                            <button class="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-purple-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200" type="submit">
-                                Filter
-                            </button>
+                        <button class="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-indigo-600 rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-indigo-200" type="submit">
+                            Filter
+                        </button>
                     </form>
                 </div>
+            </div>
+            <div class="pt-4">
+                <a href="{{ route('admin.companies.create') }}" class="inline-block flex-shrink-0 px-8 py-2 text-base font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-blue-200">新規登録</a>
             </div>
             <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                 <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
@@ -35,9 +38,6 @@
                                 </th>
                                 <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal">
                                     担当者名
-                                </th>
-                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal">
-                                    掲載状況
                                 </th>
                                 <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal">
 
@@ -63,23 +63,6 @@
                                     <p class="text-gray-900 whitespace-no-wrap">
                                         {{ $company->stuff_name }}
                                     </p>
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <span class="relative inline-block px-3 py-1 font-semibold leading-tight">
-                                        @if ($company->is_publish)
-                                            <span aria-hidden="true" class="absolute inset-0 bg-green-200 text-green-900 opacity-50 rounded-full">
-                                            </span>
-                                            <span class="relative text-green-900">
-                                                掲載中
-                                            </span>
-                                        @else
-                                            <span aria-hidden="true" class="absolute inset-0 bg-red-200 opacity-50 rounded-full">
-                                            </span>
-                                            <span class="relative text-red-900">
-                                                非掲載
-                                            </span>
-                                        @endif
-                                    </span>
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <div class="flex items-center justify-center gap-4">
