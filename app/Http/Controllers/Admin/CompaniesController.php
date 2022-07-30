@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class CompaniesController extends Controller
 {
@@ -97,7 +98,7 @@ class CompaniesController extends Controller
             'post_code' => ['required', 'string'],
             'address' => ['required', 'string'],
             'tel' => ['required', 'string'],
-            'email' => ['required', 'string', 'email'],
+            'email' => ['required', 'string', 'email', Rule::unique('companies')->ignore($id)],
         ]);
 
         $companyInfo = Company::findOrFail($id);
@@ -116,6 +117,10 @@ class CompaniesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Company::findOrFail($id)->delete();
+
+        return redirect()
+        ->route('admin.companies.index')
+        ->with('message', '企業を削除しました');
     }
 }

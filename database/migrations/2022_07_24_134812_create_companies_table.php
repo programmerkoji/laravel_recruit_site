@@ -19,7 +19,7 @@ class CreateCompaniesTable extends Migration
             $table->string('post_code');
             $table->string('address');
             $table->string('tel');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('ceo_name')->nullable();
             $table->string('stuff_name')->nullable();
             $table->date('foundation')->nullable();
@@ -27,6 +27,7 @@ class CreateCompaniesTable extends Migration
             $table->unsignedTinyInteger('employee_number')->nullable();
             $table->text('note')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
