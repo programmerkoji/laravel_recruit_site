@@ -46,9 +46,7 @@
                                 <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal">
                                     担当者名
                                 </th>
-                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal">
-
-                                </th>
+                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -73,9 +71,13 @@
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <div class="flex items-center justify-center gap-4">
-                                        <a href="{{ route('admin.companies.show',  ['company' => $company->id]) }}" class="py-1 px-2 border border-indigo-600 rounded-full text-indigo-600 hover:text-indigo-900">詳細</a>
-                                        <a href="{{ route('admin.companies.edit',  ['company' => $company->id]) }}" class="py-1 px-2 border border-green-600 rounded-full text-green-600 hover:text-green-900">編集</a>
-                                        <a href="#" class="py-1 px-2 border border-red-600 rounded-full text-red-600 hover:text-red-900">削除</a>
+                                        <a href="{{ route('admin.companies.show', ['company' => $company->id]) }}" class="py-1 px-2 border border-indigo-600 rounded-full text-indigo-600 hover:text-indigo-900">詳細</a>
+                                        <a href="{{ route('admin.companies.edit', ['company' => $company->id]) }}" class="py-1 px-2 border border-green-600 rounded-full text-green-600 hover:text-green-900">編集</a>
+                                        <form id="delete_{{ $company->id }}" action="{{ route('admin.companies.destroy', ['company' => $company->id]) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <a href="#" data-id="{{ $company->id }}" onclick="deletePost(this)" class="py-1 px-2 border border-red-600 rounded-full text-red-600 hover:text-red-900">削除</a>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>
@@ -114,4 +116,13 @@
             </div>
         </div>
     </div>
+    <script>
+        function deletePost(e) {
+            console.log(e);
+            'use strict';
+            if (confirm('本当に削除してもよいですか？')) {
+                document.getElementById('delete_' + e.dataset.id).submit();
+            }
+        }
+    </script>
 </x-app-layout>
