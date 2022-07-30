@@ -22,6 +22,13 @@
                     </form>
                 </div>
             </div>
+            @if (session('message'))
+                <script>
+                    $(function() {
+                        toastr.success('{{ session("message") }}')
+                    });
+                </script>
+            @endif
             <div class="pt-4">
                 <a href="{{ route('admin.companies.create') }}" class="inline-block flex-shrink-0 px-8 py-2 text-base font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-blue-200">新規登録</a>
             </div>

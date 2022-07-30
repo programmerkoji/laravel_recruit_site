@@ -44,15 +44,17 @@ class CompaniesController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:50'],
-            'post_code' => ['required', 'string', 'max:12'],
+            'post_code' => ['required', 'string'],
             'address' => ['required', 'string'],
-            'tel' => ['required', 'string', 'regex:/^0[-0-9]{11,12}$/', 'max:16'],
-            'email' => ['required', 'string', 'email'],
+            'tel' => ['required', 'string'],
+            'email' => ['required', 'string', 'email', 'unique:companies'],
         ]);
 
         Company::create($request->all());
 
-        return redirect()->route('admin.companies.index');
+        return redirect()
+        ->route('admin.companies.index')
+        ->with('message', '企業を登録しました');
     }
 
     /**
@@ -92,16 +94,18 @@ class CompaniesController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:50'],
-            'post_code' => ['required', 'string', 'max:12'],
+            'post_code' => ['required', 'string'],
             'address' => ['required', 'string'],
-            'tel' => ['required', 'string', 'regex:/^0[-0-9]{11,12}$/', 'max:16'],
+            'tel' => ['required', 'string'],
             'email' => ['required', 'string', 'email'],
         ]);
 
         $companyInfo = Company::findOrFail($id);
         $companyInfo->update($request->all());
 
-        return redirect()->route('admin.companies.index');
+        return redirect()
+        ->route('admin.companies.index')
+        ->with('message', '企業情報を更新しました');
     }
 
     /**
