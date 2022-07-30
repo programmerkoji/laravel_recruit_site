@@ -23,7 +23,7 @@
                 <label class="flex items-center">
                     <span class="w-1/4 pl-1 font-bold">郵便番号</span>
                     <span class="flex-auto">
-                        <input type="text" name="post_code" value="{{ old('post_code') }}" placeholder="半角数字・ハイフンあり （例）090-1234-5678" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        <input type="text" name="post_code" value="{{ old('post_code') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         @error('post_code')
                         <p class="text-rose-700 mt-2">{{ $message }}</p>
                         @enderror
