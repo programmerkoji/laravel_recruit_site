@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\CompaniesController;
+use App\Http\Controllers\Admin\JobOffersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,16 +23,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.welcome');
-});
+// Route::get('/', function () {
+//     return view('admin.welcome');
+// });
 
 Route::resource('companies', CompaniesController::class)
 ->middleware('auth:admin');
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth:admin'])->name('dashboard');
+Route::resource('job_offers', JobOffersController::class)
+->middleware('auth:admin');
+
+// Route::get('/dashboard', function () {
+//     return view('admin.dashboard');
+// })->middleware(['auth:admin'])->name('dashboard');
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])

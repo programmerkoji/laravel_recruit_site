@@ -1,29 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-2xl text-gray-800 leading-tight">
-            企業一覧
+            求人一覧
         </h2>
     </x-slot>
 
     <div class="container mx-auto px-4 sm:px-8 max-w-6xl">
         <div class="py-8">
-            {{-- <div class="flex flex-row mb-1 sm:mb-0 justify-between items-center w-full">
-                <h2 class="text-2xl leading-tight">
-                    企業一覧
-                </h2>
-                <div class="text-end">
-                    <form class="flex flex-col md:flex-row w-3/4 md:w-full max-w-sm md:space-x-3 space-y-3 md:space-y-0 justify-center">
-                        <div class=" relative ">
-                            <input type="text" id="&quot;form-subscribe-Filter" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="name"/>
-                        </div>
-                        <button class="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-indigo-600 rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-indigo-200" type="submit">
-                            Filter
-                        </button>
-                    </form>
-                </div>
-            </div> --}}
 
-            <div class="pt-4">
+            {{-- <div class="pt-4">
                 <a href="{{ route('admin.companies.create') }}" class="inline-block flex-shrink-0 px-8 py-2 text-base font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-blue-200">新規登録</a>
             </div>
             <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
@@ -82,7 +67,7 @@
                         {{ $companies->links(   ) }}
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     <script>
