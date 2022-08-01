@@ -6,14 +6,14 @@
     </x-slot>
 
     <div class="container my-10 mx-auto flex flex-col w-full items-center justify-center bg-white dark:bg-gray-800 rounded-lg shadow">
-        <form action="{{ route('admin.companies.store') }}" method="post" class="w-full divide divide-y">
+        <form action="{{ route('admin.job_offers.store') }}" method="post" class="w-full divide divide-y">
             @csrf
             <div class="p-4">
                 <label class="flex items-center">
-                    <span class="w-1/4 pl-1 font-bold">会社名</span>
+                    <span class="w-1/4 pl-1 font-bold">求人名</span>
                     <span class="flex-auto">
-                        <input type="text" name="name" value="{{ old('name') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                        @error('name')
+                        <input type="text" name="title" value="{{ old('title') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        @error('title')
                         <p class="text-rose-700 mt-2">{{ $message }}</p>
                         @enderror
                     </span>
@@ -21,10 +21,9 @@
             </div>
             <div class="p-4">
                 <label class="flex items-center">
-                    <span class="w-1/4 pl-1 font-bold">郵便番号</span>
+                    <span class="w-1/4 pl-1 font-bold">雇用形態</span>
                     <span class="flex-auto">
-                        <input type="text" name="post_code" value="{{ old('post_code') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                        @error('post_code')
+                        @error('employment_status')
                         <p class="text-rose-700 mt-2">{{ $message }}</p>
                         @enderror
                     </span>
@@ -32,10 +31,10 @@
             </div>
             <div class="p-4">
                 <label class="flex items-center">
-                    <span class="w-1/4 pl-1 font-bold">住所</span>
+                    <span class="w-1/4 pl-1 font-bold">給料</span>
                     <span class="flex-auto">
-                        <input type="text" name="address" value="{{ old('address') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                        @error('address')
+                        <input type="text" name="salary" value="{{ old('salary') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        @error('salary')
                         <p class="text-rose-700 mt-2">{{ $message }}</p>
                         @enderror
                     </span>

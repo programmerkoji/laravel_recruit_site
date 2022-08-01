@@ -3,10 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\JobOffer;
 use Illuminate\Http\Request;
 
 class JobOffersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,9 @@ class JobOffersController extends Controller
      */
     public function index()
     {
-        return view('admin.job_offers.index');
+        $job_offers = JobOffer::with('company')->select('title', 'company_id', 'is_publish')->get();
+
+        return view('admin.job_offers.index', compact('job_offers'));
     }
 
     /**
@@ -24,7 +32,7 @@ class JobOffersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.job_offers.create');
     }
 
     /**
@@ -35,7 +43,11 @@ class JobOffersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        JobOffer::create($request->all());
+
+        return redirect()
+        ->route('admin.job_offers.index')
+        ->with('message', '求人を登録しました');
     }
 
     /**
@@ -46,7 +58,10 @@ class JobOffersController extends Controller
      */
     public function show($id)
     {
-        //
+        $job_offers = JobOffer::findOrFail($id);
+        dd($job_offers->toArray());
+        return view('admin.job_offers.show', compact('job_offers'));
+
     }
 
     /**

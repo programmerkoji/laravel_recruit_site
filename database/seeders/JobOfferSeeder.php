@@ -43,7 +43,7 @@ class JobOfferSeeder extends Seeder
                 'holiday' => '土日祝',
                 'qualification' => '普通自動車運転免許',
                 'recruitment_count' => 5,
-                'is_publish' => true,
+                'is_publish' => false,
                 'free_text' => 'テスト投稿です。02',
                 'created_at' => '2022/08/01 11:11:11',
             ],
