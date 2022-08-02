@@ -17,17 +17,16 @@ class CreateJobOffersTable extends Migration
             $table->id();
             $table->foreignId('company_id')
             ->constrained();
+            $table->boolean('is_publish');
             $table->string('title');
-            $table->tinyInteger('employment_status');
+            $table->string('employment_status');
             $table->string('salary');
-            $table->time('opening_time');
-            $table->time('closing_time');
-            $table->string('welfare');
+            $table->string('job_time');
             $table->text('job_content');
+            $table->string('welfare');
             $table->string('holiday');
             $table->string('qualification')->nullable();
-            $table->tinyInteger('recruitment_count');
-            $table->boolean('is_publish');
+            $table->tinyInteger('recruitment_count')->nullable();
             $table->text('free_text')->nullable();
             $table->timestamps();
         });

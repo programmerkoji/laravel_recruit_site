@@ -16,19 +16,7 @@
             <li class="p-4">
                 <dl class="flex items-center">
                     <dt class="w-1/4 pl-1 font-bold">掲載企業名</dt>
-                    <dd class="flex-auto">〒{{ $jobOfferInfo->company->name }}</dd>
-                </dl>
-            </li>
-            <li class="p-4">
-                <dl class="flex items-center">
-                    <dt class="w-1/4 pl-1 font-bold">電話番号</dt>
-                    <dd class="flex-auto">{{ $jobOfferInfo->tel }}</dd>
-                </dl>
-            </li>
-            <li class="p-4">
-                <dl class="flex items-center">
-                    <dt class="w-1/4 pl-1 font-bold">メールアドレス</dt>
-                    <dd class="flex-auto">{{ $jobOfferInfo->email }}</dd>
+                    <dd class="flex-auto">{{ $jobOfferInfo->company->name }}</dd>
                 </dl>
             </li>
             <li class="p-4">
@@ -43,45 +31,63 @@
             </li>
             <li class="p-4">
                 <dl class="flex items-center">
-                    <dt class="w-1/4 pl-1 font-bold">代表者名</dt>
-                    <dd class="flex-auto">{{ $jobOfferInfo->ceo_name }}</dd>
+                    <dt class="w-1/4 pl-1 font-bold">雇用形態</dt>
+                    <dd class="flex-auto">{{ $jobOfferInfo->employment_status }}</dd>
                 </dl>
             </li>
             <li class="p-4">
                 <dl class="flex items-center">
-                    <dt class="w-1/4 pl-1 font-bold">担当者名</dt>
-                    <dd class="flex-auto">{{ $jobOfferInfo->stuff_name }}</dd>
+                    <dt class="w-1/4 pl-1 font-bold">給与</dt>
+                    <dd class="flex-auto">{{ $jobOfferInfo->salary }}</dd>
                 </dl>
             </li>
             <li class="p-4">
                 <dl class="flex items-center">
-                    <dt class="w-1/4 pl-1 font-bold">設立</dt>
-                    <dd class="flex-auto">{{ $jobOfferInfo->foundation }}</dd>
+                    <dt class="w-1/4 pl-1 font-bold">勤務時間</dt>
+                    <dd class="flex-auto">{{ $jobOfferInfo->job_time }}</dd>
                 </dl>
             </li>
             <li class="p-4">
                 <dl class="flex items-center">
-                    <dt class="w-1/4 pl-1 font-bold">資本金</dt>
-                    <dd class="flex-auto">{{ number_format($jobOfferInfo->capital) }}円</dd>
+                    <dt class="w-1/4 pl-1 font-bold">仕事内容</dt>
+                    <dd class="flex-auto">{{ $jobOfferInfo->job_content }}</dd>
                 </dl>
             </li>
             <li class="p-4">
                 <dl class="flex items-center">
-                    <dt class="w-1/4 pl-1 font-bold">従業員数</dt>
-                    <dd class="flex-auto">{{ $jobOfferInfo->employee_number }}人</dd>
+                    <dt class="w-1/4 pl-1 font-bold">待遇・福利厚生</dt>
+                    <dd class="flex-auto">{{ $jobOfferInfo->welfare }}</dd>
                 </dl>
             </li>
             <li class="p-4">
                 <dl class="flex items-center">
-                    <dt class="w-1/4 pl-1 font-bold">その他</dt>
-                    <dd class="flex-auto">{{ $jobOfferInfo->note }}</dd>
+                    <dt class="w-1/4 pl-1 font-bold">休日・休暇</dt>
+                    <dd class="flex-auto">{{ $jobOfferInfo->holiday }}</dd>
+                </dl>
+            </li>
+            <li class="p-4">
+                <dl class="flex items-center">
+                    <dt class="w-1/4 pl-1 font-bold">応募資格</dt>
+                    <dd class="flex-auto">{{ $jobOfferInfo->qualification }}</dd>
+                </dl>
+            </li>
+            <li class="p-4">
+                <dl class="flex items-center">
+                    <dt class="w-1/4 pl-1 font-bold">募集人数</dt>
+                    <dd class="flex-auto">{{ $jobOfferInfo->recruitment_count }}人</dd>
+                </dl>
+            </li>
+            <li class="p-4">
+                <dl class="flex items-center">
+                    <dt class="w-1/4 pl-1 font-bold">その他・フリーテキスト</dt>
+                    <dd class="flex-auto">{{ $jobOfferInfo->free_text }}</dd>
                 </dl>
             </li>
         </ul>
     </div>
     <div class="flex justify-center items-center gap-6 pb-10">
-        <a href="{{ route('admin.companies.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">戻る</a>
-        <a href="{{ route('admin.companies.edit', ['company' => $jobOfferInfo->id]) }}" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">編集</a>
+        <a href="{{ route('admin.job_offers.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">戻る</a>
+        <a href="{{ route('admin.job_offers.edit', ['job_offer' => $jobOfferInfo->id]) }}" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">編集</a>
     </div>
 
 </x-app-layout>

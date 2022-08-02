@@ -137,5 +137,12 @@ return [
         'name' => '名前',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
+        'title' => '求人名',
+        'employment_status' => '雇用形態',
+        'salary' => '給与',
+        'job_time' => '勤務時間',
+        'job_content' => '仕事内容',
+        'welfare' => '待遇・福利厚生',
+        'holiday' => '休日・休暇',
     ],
 ];

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\JobOffer;
+use App\Models\Company;
 use Illuminate\Http\Request;
 
 class JobOffersController extends Controller
@@ -20,7 +21,7 @@ class JobOffersController extends Controller
      */
     public function index()
     {
-        $job_offers = JobOffer::with('company')->select('title', 'company_id', 'is_publish')->get();
+        $job_offers = JobOffer::with('company')->select('id', 'title', 'company_id', 'is_publish')->get();
 
         return view('admin.job_offers.index', compact('job_offers'));
     }
@@ -32,7 +33,9 @@ class JobOffersController extends Controller
      */
     public function create()
     {
-        return view('admin.job_offers.create');
+        $companies = Company::select('id', 'name')->get();
+        
+        return view('admin.job_offers.create', compact('companies'));
     }
 
     /**
@@ -43,6 +46,16 @@ class JobOffersController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => ['required', 'string'],
+            'employment_status' => ['required', 'string'],
+            'salary' => ['required', 'string'],
+            'job_time' => ['required', 'string'],
+            'job_content' => ['required', 'string'],
+            'welfare' => ['required', 'string'],
+            'holiday' => ['required', 'string'],
+        ]);
+
         JobOffer::create($request->all());
 
         return redirect()
@@ -58,10 +71,9 @@ class JobOffersController extends Controller
      */
     public function show($id)
     {
-        $job_offers = JobOffer::findOrFail($id);
-        dd($job_offers->toArray());
-        return view('admin.job_offers.show', compact('job_offers'));
+        $jobOfferInfo = JobOffer::findOrFail($id);
 
+        return view('admin.job_offers.show', compact('jobOfferInfo'));
     }
 
     /**

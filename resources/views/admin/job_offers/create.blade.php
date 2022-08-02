@@ -9,6 +9,32 @@
         <form action="{{ route('admin.job_offers.store') }}" method="post" class="w-full divide divide-y">
             @csrf
             <div class="p-4">
+                <div class="flex items-center">
+                    <p class="w-1/4 pl-1 font-bold">掲載状況</p>
+                    <span class="flex-auto">
+                        <div class="w-full flex gap-4 items-center">
+                            <label><input type="radio" name="is_publish" value="1" class="mr-2" checked><span>掲載中</span></label>
+                            <label><input type="radio" name="is_publish" value="0" class="mr-2"><span>非掲載</span></label>
+                        </div>
+                        @error('is_publish')
+                        <p class="text-rose-700 mt-2">{{ $message }}</p>
+                        @enderror
+                    </span>
+                </div>
+            </div>
+            <div class="p-4">
+                <div class="flex items-center">
+                    <p class="w-1/4 pl-1 font-bold">掲載企業</p>
+                    <div class="flex-auto">
+                        <select name="company_id" class="bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 pl-3 pr-6 leading-8 transition-colors duration-200 ease-in-out">
+                            @foreach ($companies as $company)
+                                <option value="{{ $company->id }}">{{ $company->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4">
                 <label class="flex items-center">
                     <span class="w-1/4 pl-1 font-bold">求人名</span>
                     <span class="flex-auto">
@@ -23,6 +49,7 @@
                 <label class="flex items-center">
                     <span class="w-1/4 pl-1 font-bold">雇用形態</span>
                     <span class="flex-auto">
+                        <input type="text" name="employment_status" value="{{ old('employment_status') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         @error('employment_status')
                         <p class="text-rose-700 mt-2">{{ $message }}</p>
                         @enderror
@@ -42,10 +69,10 @@
             </div>
             <div class="p-4">
                 <label class="flex items-center">
-                    <span class="w-1/4 pl-1 font-bold">電話番号</span>
+                    <span class="w-1/4 pl-1 font-bold">勤務時間</span>
                     <span class="flex-auto">
-                        <input type="text" name="tel" value="{{ old('tel') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                        @error('tel')
+                        <input type="text" name="job_time" value="{{ old('job_time') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        @error('job_time')
                         <p class="text-rose-700 mt-2">{{ $message }}</p>
                         @enderror
                     </span>
@@ -53,10 +80,10 @@
             </div>
             <div class="p-4">
                 <label class="flex items-center">
-                    <span class="w-1/4 pl-1 font-bold">メールアドレス</span>
+                    <span class="w-1/4 pl-1 font-bold">仕事内容</span>
                     <span class="flex-auto">
-                        <input type="text" name="email" value="{{ old('email') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                        @error('email')
+                        <textarea name="job_content" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ old('job_content') }}</textarea>
+                        @error('job_content')
                         <p class="text-rose-700 mt-2">{{ $message }}</p>
                         @enderror
                     </span>
@@ -64,56 +91,53 @@
             </div>
             <div class="p-4">
                 <label class="flex items-center">
-                    <span class="w-1/4 pl-1 font-bold">代表者名</span>
+                    <span class="w-1/4 pl-1 font-bold">待遇・福利厚生</span>
                     <span class="flex-auto">
-                        <input type="text" name="ceo_name" value="{{ old('ceo_name') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        <input type="text" name="welfare" value="{{ old('welfare') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        @error('welfare')
+                        <p class="text-rose-700 mt-2">{{ $message }}</p>
+                        @enderror
                     </span>
                 </label>
             </div>
             <div class="p-4">
                 <label class="flex items-center">
-                    <span class="w-1/4 pl-1 font-bold">担当者名</span>
+                    <span class="w-1/4 pl-1 font-bold">休日・休暇</span>
                     <span class="flex-auto">
-                        <input type="text" name="stuff_name" value="{{ old('stuff_name') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        <input type="text" name="holiday" value="{{ old('holiday') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        @error('holiday')
+                        <p class="text-rose-700 mt-2">{{ $message }}</p>
+                        @enderror
                     </span>
                 </label>
             </div>
             <div class="p-4">
                 <label class="flex items-center">
-                    <span class="w-1/4 pl-1 font-bold">設立</span>
+                    <span class="w-1/4 pl-1 font-bold">応募資格</span>
                     <span class="flex-auto">
-                        <input type="text" name="foundation" value="{{ old('foundation') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        <input type="text" name="qualification" value="{{ old('qualification') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                     </span>
                 </label>
             </div>
             <div class="p-4">
                 <label class="flex items-center">
-                    <span class="w-1/4 pl-1 font-bold">資本金</span>
+                    <span class="w-1/4 pl-1 font-bold">募集人数</span>
                     <span class="flex-auto">
-                        <input type="text" name="capital" value="{{ old('capital') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        <input type="text" name="recruitment_count" value="{{ old('recruitment_count') }}" class="w-1/2 mr-2 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">人
                         <p class="mt-2">※数字のみ</p>
                     </span>
                 </label>
             </div>
             <div class="p-4">
                 <label class="flex items-center">
-                    <span class="w-1/4 pl-1 font-bold">従業員数</span>
+                    <span class="w-1/4 pl-1 font-bold">その他・フリーテキスト</span>
                     <span class="flex-auto">
-                        <input type="text" name="employee_number" value="{{ old('employee_number') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                        <p class="mt-2">※数字のみ</p>
-                    </span>
-                </label>
-            </div>
-            <div class="p-4">
-                <label class="flex items-center">
-                    <span class="w-1/4 pl-1 font-bold">その他</span>
-                    <span class="flex-auto">
-                        <textarea name="note" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ old('note') }}</textarea>
+                        <textarea name="free_text" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ old('free_text') }}</textarea>
                     </span>
                 </label>
             </div>
             <div class="flex justify-center items-center gap-6 py-10">
-                <a href="{{ route('admin.companies.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">戻る</a>
+                <a href="{{ route('admin.job_offers.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">戻る</a>
                 <button type="submit" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">登録</button>
             </div>
         </form>
