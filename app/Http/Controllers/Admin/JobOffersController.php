@@ -34,7 +34,7 @@ class JobOffersController extends Controller
     public function create()
     {
         $companies = Company::select('id', 'name')->get();
-        
+
         return view('admin.job_offers.create', compact('companies'));
     }
 
@@ -47,6 +47,8 @@ class JobOffersController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'is_publish' => ['required', 'boolean'],
+            'company_id' => ['required', 'integer'],
             'title' => ['required', 'string'],
             'employment_status' => ['required', 'string'],
             'salary' => ['required', 'string'],
@@ -84,7 +86,9 @@ class JobOffersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $jobOfferInfo = JobOffer::findOrFail($id);
+
+        return view('admin.job_offers.edit', compact('jobOfferInfo'));
     }
 
     /**
@@ -96,7 +100,23 @@ class JobOffersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'is_publish' => ['required', 'boolean'],
+            'title' => ['required', 'string'],
+            'employment_status' => ['required', 'string'],
+            'salary' => ['required', 'string'],
+            'job_time' => ['required', 'string'],
+            'job_content' => ['required', 'string'],
+            'welfare' => ['required', 'string'],
+            'holiday' => ['required', 'string'],
+        ]);
+
+        $jobOfferInfo = JobOffer::findOrFail($id);
+        $jobOfferInfo->update($request->all());
+
+        return redirect()
+        ->route('admin.job_offers.index')
+        ->with('message', '求人を更新しました');
     }
 
     /**
