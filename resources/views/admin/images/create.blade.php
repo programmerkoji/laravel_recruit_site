@@ -32,8 +32,11 @@
                 <label class="flex items-center">
                     <span class="w-1/4 pl-1 font-bold">画像</span>
                     <span class="flex-auto">
-                        <input type="file" name="image" accept="image/png,image/jpeg,image/jpg" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        <input type="file" name="file_name" accept="image/png,image/jpeg,image/jpg" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                     </span>
+                    @error('file_name')
+                    <span class="text-rose-700 mt-2">{{ $message }}</span>
+                    @enderror
                 </label>
             </div>
             <div class="flex justify-center items-center gap-6 py-10">

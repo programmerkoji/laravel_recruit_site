@@ -134,6 +134,7 @@ return [
         ],
     ],
     'attributes' => [
+        'post_code' => '郵便番号',
         'name' => '名前',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
@@ -144,5 +145,6 @@ return [
         'job_content' => '仕事内容',
         'welfare' => '待遇・福利厚生',
         'holiday' => '休日・休暇',
+        'file_name' => '画像',
     ],
 ];

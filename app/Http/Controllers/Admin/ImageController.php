@@ -47,9 +47,13 @@ class ImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ImageRequest $request)
+    public function store(Request $request)
     {
-        $imageFile = $request->file('image');
+        $request->validate([
+            'file_name' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        $imageFile = $request->file('file_name');
         $filePath = isset($imageFile) ? $imageFile->store('jobImages', 'public') : '';
 
         Image::create([
@@ -58,7 +62,9 @@ class ImageController extends Controller
             'file_name' => $filePath,
         ]);
 
-        return redirect()->route('admin.images.index');
+        return redirect()
+        ->route('admin.images.index')
+        ->with('message', '画像を登録しました');
     }
 
     /**
@@ -80,7 +86,9 @@ class ImageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $imageInfo = Image::findOrFail($id);
+
+        return view('admin.images.edit', compact('imageInfo'));
     }
 
     /**
@@ -92,7 +100,12 @@ class ImageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $imageInfo = Image::findOrFail($id);
+        $imageInfo->update($request->all());
+
+        return redirect()
+        ->route('admin.images.index')
+        ->with('message', '画像情報を更新しました');
     }
 
     /**
@@ -103,6 +116,16 @@ class ImageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $image = Image::findOrFail($id);
+        $filePath = 'public/'. $image->file_name;
+        if(Storage::exists($filePath)){
+            Storage::delete($filePath);
+        }
+
+        Image::findOrFail($id)->delete();
+
+        return redirect()
+        ->route('admin.images.index')
+        ->with('message', '画像を削除しました');
     }
 }

@@ -14,15 +14,19 @@
                 <ul class="flex lg:flex-row flex-col flex-wrap">
                     @foreach ($images as $image)
                     <li class="w-full lg:w-1/3 p-2">
-                        <div class="p-4 bg-white rounded shadow">
+                        <div class="w-full h-full p-4 bg-white rounded shadow">
                             <figure class="mb-3">
-                                <img src="{{ asset('storage/' . $image->file_name)  }}" alt="" class="mb-1">
+                                <img src="{{ asset('storage/' . $image->file_name)  }}" alt="">
                             </figure>
                             <p class="mb-1"><span class="font-bold">画像名：</span>{{ $image->title }}</p>
                             <p class="mb-4"><span class="font-bold">企業名：</span>{{  $image->company->name }}</p>
                             <div class="flex items-center justify-center gap-4">
-                                <a href="" class="py-1 px-4 border border-green-600 rounded-full text-green-600 hover:text-green-900">編集</a>
-                                <a href="" class="py-1 px-4 border border-red-600 rounded-full text-red-600 hover:text-red-900">削除</a>
+                                <a href="{{ route('admin.images.edit', ['image' => $image->id]) }}" class="py-1 px-4 border border-green-600 rounded-full text-green-600 hover:text-green-900">編集</a>
+                                <form id="delete_{{ $image->id }}" action="{{ route('admin.images.destroy', ['image' => $image->id]) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <a href="#" data-id="{{ $image->id }}" onclick="deletePost(this)" class="py-1 px-4 border border-red-600 rounded-full text-red-600 hover:text-red-900">削除</a>
+                                </form>
                             </div>
                         </div>
                     </li>

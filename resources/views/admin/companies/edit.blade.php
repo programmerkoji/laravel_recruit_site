@@ -15,7 +15,7 @@
                     <span class="flex-auto">
                         <input type="text" name="name" value="{{ $companyInfo->name }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         @error('name')
-                        <p class="text-rose-700 mt-2">{{ $message }}</p>
+                        <span class="text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
                     </span>
                 </label>
@@ -26,7 +26,7 @@
                     <span class="flex-auto">
                         <input type="text" name="post_code" value="{{ $companyInfo->post_code }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         @error('post_code')
-                        <p class="text-rose-700 mt-2">{{ $message }}</p>
+                        <span class="text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
                     </span>
                 </label>
@@ -37,7 +37,7 @@
                     <span class="flex-auto">
                         <input type="text" name="address" value="{{ $companyInfo->address }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         @error('address')
-                        <p class="text-rose-700 mt-2">{{ $message }}</p>
+                        <span class="text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
                     </span>
                 </label>
@@ -48,7 +48,7 @@
                     <span class="flex-auto">
                         <input type="text" name="tel" value="{{ $companyInfo->tel }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         @error('tel')
-                        <p class="text-rose-700 mt-2">{{ $message }}</p>
+                        <span class="text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
                     </span>
                 </label>
@@ -59,7 +59,7 @@
                     <span class="flex-auto">
                         <input type="text" name="email" value="{{ $companyInfo->email }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         @error('email')
-                        <p class="text-rose-700 mt-2">{{ $message }}</p>
+                        <span class="text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
                     </span>
                 </label>
