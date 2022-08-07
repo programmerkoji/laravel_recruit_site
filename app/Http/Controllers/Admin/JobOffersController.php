@@ -127,6 +127,10 @@ class JobOffersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        JobOffer::findOrFail($id)->delete();
+
+        return redirect()
+        ->route('admin.job_offers.index')
+        ->with('message', '画像を削除しました');
     }
 }

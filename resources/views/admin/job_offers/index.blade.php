@@ -52,6 +52,11 @@
                                     <div class="flex items-center justify-center gap-4">
                                         <a href="{{ route('admin.job_offers.show', ['job_offer' => $job_offer->id]) }}" class="py-1 px-2 border border-indigo-600 rounded-full text-indigo-600 hover:text-indigo-900">詳細</a>
                                         <a href="{{ route('admin.job_offers.edit', ['job_offer' => $job_offer->id]) }}" class="py-1 px-2 border border-green-600 rounded-full text-green-600 hover:text-green-900">編集</a>
+                                        <form id="delete_{{ $job_offer->id }}" action="{{ route('admin.job_offers.destroy', ['job_offer' => $job_offer->id]) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <a href="#" data-id="{{ $job_offer->id }}" onclick="deletePost(this)" class="py-1 px-2 border border-red-600 rounded-full text-red-600 hover:text-red-900">削除</a>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>

@@ -31,7 +31,6 @@ class CreateJobOffersTable extends Migration
             $table->tinyInteger('recruitment_count')->nullable();
             $table->text('free_text')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

@@ -27,7 +27,6 @@ class CreateCompaniesTable extends Migration
             $table->unsignedTinyInteger('employee_number')->nullable();
             $table->text('note')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
