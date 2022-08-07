@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\CompaniesController;
 use App\Http\Controllers\Admin\JobOffersController;
+use App\Http\Controllers\Admin\ImageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,9 @@ Route::resource('companies', CompaniesController::class)
 
 Route::resource('job_offers', JobOffersController::class)
 ->middleware('auth:admin');
+
+Route::resource('images', ImageController::class)
+->middleware('auth:admin')->except('show');
 
 // Route::get('/dashboard', function () {
 //     return view('admin.dashboard');

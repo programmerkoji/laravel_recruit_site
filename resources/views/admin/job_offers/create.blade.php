@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            新規登録（求人）
         </h2>
     </x-slot>
 
@@ -40,7 +40,7 @@
                     <span class="flex-auto">
                         <input type="text" name="title" value="{{ old('title') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         @error('title')
-                        <p class="text-rose-700 mt-2">{{ $message }}</p>
+                        <span class="text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
                     </span>
                 </label>
@@ -51,7 +51,7 @@
                     <span class="flex-auto">
                         <input type="text" name="employment_status" value="{{ old('employment_status') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         @error('employment_status')
-                        <p class="text-rose-700 mt-2">{{ $message }}</p>
+                        <span class="text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
                     </span>
                 </label>
@@ -62,7 +62,7 @@
                     <span class="flex-auto">
                         <input type="text" name="salary" value="{{ old('salary') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         @error('salary')
-                        <p class="text-rose-700 mt-2">{{ $message }}</p>
+                        <span class="text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
                     </span>
                 </label>
@@ -73,7 +73,7 @@
                     <span class="flex-auto">
                         <input type="text" name="job_time" value="{{ old('job_time') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         @error('job_time')
-                        <p class="text-rose-700 mt-2">{{ $message }}</p>
+                        <span class="text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
                     </span>
                 </label>
@@ -84,7 +84,7 @@
                     <span class="flex-auto">
                         <textarea name="job_content" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ old('job_content') }}</textarea>
                         @error('job_content')
-                        <p class="text-rose-700 mt-2">{{ $message }}</p>
+                        <span class="text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
                     </span>
                 </label>
@@ -95,7 +95,7 @@
                     <span class="flex-auto">
                         <input type="text" name="welfare" value="{{ old('welfare') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         @error('welfare')
-                        <p class="text-rose-700 mt-2">{{ $message }}</p>
+                        <span class="text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
                     </span>
                 </label>
@@ -106,7 +106,7 @@
                     <span class="flex-auto">
                         <input type="text" name="holiday" value="{{ old('holiday') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         @error('holiday')
-                        <p class="text-rose-700 mt-2">{{ $message }}</p>
+                        <span class="text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
                     </span>
                 </label>
@@ -124,7 +124,7 @@
                     <span class="w-1/4 pl-1 font-bold">募集人数</span>
                     <span class="flex-auto">
                         <input type="text" name="recruitment_count" value="{{ old('recruitment_count') }}" class="w-1/2 mr-2 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">人
-                        <p class="mt-2">※数字のみ</p>
+                        <span class="mt-2">※数字のみ</span>
                     </span>
                 </label>
             </div>

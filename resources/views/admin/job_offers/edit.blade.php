@@ -21,7 +21,7 @@
                     <span class="flex-auto">
                         <input type="text" name="title" value="{{ $jobOfferInfo->title }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         @error('title')
-                        <p class="text-rose-700 mt-2">{{ $message }}</p>
+                        <span class="text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
                     </span>
                 </label>
@@ -35,7 +35,7 @@
                             <label><input type="radio" name="is_publish" value="0" class="mr-2" @if ($jobOfferInfo->is_publish === 0) { checked } @endif><span>非掲載</span></label>
                         </div>
                         @error('is_publish')
-                        <p class="text-rose-700 mt-2">{{ $message }}</p>
+                        <span class="text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
                     </span>
                 </div>
@@ -46,7 +46,7 @@
                     <span class="flex-auto">
                         <input type="text" name="employment_status" value="{{ $jobOfferInfo->employment_status }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         @error('employment_status')
-                        <p class="text-rose-700 mt-2">{{ $message }}</p>
+                        <span class="text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
                     </span>
                 </label>
@@ -57,7 +57,7 @@
                     <span class="flex-auto">
                         <input type="text" name="salary" value="{{ $jobOfferInfo->salary }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         @error('salary')
-                        <p class="text-rose-700 mt-2">{{ $message }}</p>
+                        <span class="text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
                     </span>
                 </label>
@@ -68,7 +68,7 @@
                     <span class="flex-auto">
                         <input type="text" name="job_time" value="{{ $jobOfferInfo->job_time }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         @error('job_time')
-                            <p class="text-rose-700 mt-2">{{ $message }}</p>
+                            <span class="text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
                     </span>
                 </label>
@@ -79,7 +79,7 @@
                     <span class="flex-auto">
                         <textarea name="job_content" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ $jobOfferInfo->job_content }}</textarea>
                         @error('job_content')
-                            <p class="text-rose-700 mt-2">{{ $message }}</p>
+                            <span class="text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
                     </span>
                 </label>
@@ -90,7 +90,7 @@
                     <span class="flex-auto">
                         <input type="text" name="welfare" value="{{ $jobOfferInfo->welfare }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         @error('welfare')
-                            <p class="text-rose-700 mt-2">{{ $message }}</p>
+                            <span class="text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
                     </span>
                 </label>
@@ -101,7 +101,7 @@
                     <span class="flex-auto">
                         <input type="text" name="holiday" value="{{ $jobOfferInfo->holiday }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         @error('holiday')
-                            <p class="text-rose-700 mt-2">{{ $message }}</p>
+                            <span class="text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
                     </span>
                 </label>

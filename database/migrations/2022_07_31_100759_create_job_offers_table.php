@@ -16,7 +16,9 @@ class CreateJobOffersTable extends Migration
         Schema::create('job_offers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('company_id')
-            ->constrained();
+            ->constrained()
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->boolean('is_publish');
             $table->string('title');
             $table->string('employment_status');
@@ -29,6 +31,7 @@ class CreateJobOffersTable extends Migration
             $table->tinyInteger('recruitment_count')->nullable();
             $table->text('free_text')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
