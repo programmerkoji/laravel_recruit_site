@@ -31,6 +31,12 @@
             </li>
             <li class="p-4">
                 <dl class="flex items-center">
+                    <dt class="w-1/4 pl-1 font-bold">職種</dt>
+                    <dd class="flex-auto">{{ $jobOfferInfo->job_category->category_name }}</dd>
+                </dl>
+            </li>
+            <li class="p-4">
+                <dl class="flex items-center">
                     <dt class="w-1/4 pl-1 font-bold">雇用形態</dt>
                     <dd class="flex-auto">{{ $jobOfferInfo->employment_status }}</dd>
                 </dl>

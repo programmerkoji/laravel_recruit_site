@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\JobOffer;
 use App\Models\Company;
+use App\Models\JobCategory;
 use Illuminate\Http\Request;
 
 class JobOffersController extends Controller
@@ -34,8 +35,9 @@ class JobOffersController extends Controller
     public function create()
     {
         $companies = Company::select('id', 'name')->get();
+        $jobCategories = JobCategory::select('id', 'category_name')->get();
 
-        return view('admin.job_offers.create', compact('companies'));
+        return view('admin.job_offers.create', compact('companies', 'jobCategories'));
     }
 
     /**
@@ -49,6 +51,7 @@ class JobOffersController extends Controller
         $request->validate([
             'is_publish' => ['required', 'boolean'],
             'company_id' => ['required', 'integer'],
+            'job_category_id' => ['required', 'integer'],
             'title' => ['required', 'string'],
             'employment_status' => ['required', 'string'],
             'salary' => ['required', 'string'],

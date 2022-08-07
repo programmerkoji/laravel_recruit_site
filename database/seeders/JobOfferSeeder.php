@@ -17,6 +17,7 @@ class JobOfferSeeder extends Seeder
         DB::table('job_offers')->insert([
             [
                 'company_id' => 1,
+                'job_category_id' => 1,
                 'title' => '人材募集',
                 'employment_status' => '正社員',
                 'salary' => '25万円',
@@ -32,6 +33,7 @@ class JobOfferSeeder extends Seeder
             ],
             [
                 'company_id' => 2,
+                'job_category_id' => 2,
                 'title' => '人材募集02',
                 'employment_status' => '正社員、パート',
                 'salary' => '25万円、パート：時給1,000円',
@@ -47,6 +49,7 @@ class JobOfferSeeder extends Seeder
             ],
             [
                 'company_id' => 1,
+                'job_category_id' => 3,
                 'title' => '人材募集03',
                 'employment_status' => '契約社員',
                 'salary' => '25万円',

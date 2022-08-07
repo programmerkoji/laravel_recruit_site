@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Company;
+use App\Models\JobCategory;
 
 class JobOffer extends Model
 {
@@ -12,6 +13,7 @@ class JobOffer extends Model
 
     protected $fillable = [
         'company_id',
+        'job_category_id',
         'title',
         'employment_status',
         'salary',
@@ -29,5 +31,10 @@ class JobOffer extends Model
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function job_category()
+    {
+        return $this->belongsTo(JobCategory::class);
     }
 }
