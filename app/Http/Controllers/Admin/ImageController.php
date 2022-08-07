@@ -3,10 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ImageRequest;
+use App\Models\Image;
+use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use InterventionImage;
 
 class ImageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +24,9 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        $images = Image::all();
+
+        return view('admin.images.index', compact('images'));
     }
 
     /**
@@ -24,7 +36,9 @@ class ImageController extends Controller
      */
     public function create()
     {
-        //
+        $companies = Company::select('id', 'name')->get();
+
+        return view('admin.images.create', compact('companies'));
     }
 
     /**
@@ -33,9 +47,18 @@ class ImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ImageRequest $request)
     {
-        //
+        $imageFile = $request->file('image');
+        $filePath = isset($imageFile) ? $imageFile->store('jobImages', 'public') : '';
+
+        Image::create([
+            'company_id' => $request->company_id,
+            'title' => $request->title,
+            'file_name' => $filePath,
+        ]);
+
+        return redirect()->route('admin.images.index');
     }
 
     /**

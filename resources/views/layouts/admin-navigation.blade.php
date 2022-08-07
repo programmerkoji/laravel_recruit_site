@@ -16,7 +16,10 @@
                         求人一覧
                     </x-nav-link>
                     <x-nav-link :href="route('admin.companies.index')" :active="request()->routeIs('admin.companies.index')">
-                        オーナー管理
+                        企業一覧
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.images.index')" :active="request()->routeIs('admin.images.index')">
+                        画像一覧
                     </x-nav-link>
                 </div>
             </div>
@@ -71,6 +74,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.companies.index')" :active="request()->routeIs('admin.companies.index')">
                 企業一覧
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.images.index')" :active="request()->routeIs('admin.images.index')">
+                画像一覧
             </x-responsive-nav-link>
         </div>
 

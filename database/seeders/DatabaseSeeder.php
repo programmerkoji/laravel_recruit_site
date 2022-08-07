@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             CompanySeeder::class,
             JobOfferSeeder::class,
+            ImageSeeder::class,
         ]);
     }
 }
