@@ -63,9 +63,9 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{-- <div class="px-5 bg-white py-5">
+                    <div class="px-5 bg-white py-5">
                         {{ $job_offers->links() }}
-                    </div> --}}
+                    </div>
                 </div>
             </div>
         </div>

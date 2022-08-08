@@ -22,7 +22,7 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $images = Image::all();
+        $images = Image::with('company')->paginate(12);
 
         return view('admin.images.index', compact('images'));
     }

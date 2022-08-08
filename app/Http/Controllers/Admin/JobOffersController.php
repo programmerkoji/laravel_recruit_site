@@ -23,7 +23,7 @@ class JobOffersController extends Controller
      */
     public function index()
     {
-        $job_offers = JobOffer::with('company')->select('id', 'title', 'company_id', 'is_publish')->get();
+        $job_offers = JobOffer::with('company')->select('id', 'title', 'company_id', 'is_publish')->paginate(10);
 
         return view('admin.job_offers.index', compact('job_offers'));
     }

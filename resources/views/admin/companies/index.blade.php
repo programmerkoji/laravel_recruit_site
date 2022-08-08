@@ -79,7 +79,7 @@
                         </tbody>
                     </table>
                     <div class="px-5 bg-white py-5">
-                        {{ $companies->links(   ) }}
+                        {{ $companies->links() }}
                     </div>
                 </div>
             </div>
