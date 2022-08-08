@@ -41,6 +41,34 @@
                 </div>
             </div>
             <div class="p-4">
+                <div class="flex items-center">
+                    <p class="w-1/4 pl-1 font-bold">職種</p>
+                    <div class="flex-auto">
+                        <select name="job_category_id" class="bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 pl-3 pr-8 leading-8 transition-colors duration-200 ease-in-out">
+                            @foreach ($jobCategories as $jobCategory)
+                                <option value="{{ $jobCategory->id }}" @if ($jobOfferInfo->job_category_id === $jobCategory->id) { selected } @endif>
+                                    {{ $jobCategory->category_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4">
+                <div class="flex items-center">
+                    <p class="w-1/4 pl-1 font-bold">エリア</p>
+                    <div class="flex-auto">
+                        <select name="job_area_id" class="bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 pl-3 pr-8 leading-8 transition-colors duration-200 ease-in-out">
+                            @foreach ($jobAreas as $jobArea)
+                                <option value="{{ $jobArea->id }}" @if ($jobOfferInfo->job_area_id === $jobArea->id) { selected } @endif>
+                                    {{ $jobArea->area_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4">
                 <label class="flex items-center">
                     <span class="w-1/4 pl-1 font-bold">雇用形態</span>
                     <span class="flex-auto">

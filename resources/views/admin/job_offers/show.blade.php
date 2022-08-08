@@ -37,6 +37,12 @@
             </li>
             <li class="p-4">
                 <dl class="flex items-center">
+                    <dt class="w-1/4 pl-1 font-bold">エリア</dt>
+                    <dd class="flex-auto">{{ $jobOfferInfo->job_area->area_name }}</dd>
+                </dl>
+            </li>
+            <li class="p-4">
+                <dl class="flex items-center">
                     <dt class="w-1/4 pl-1 font-bold">雇用形態</dt>
                     <dd class="flex-auto">{{ $jobOfferInfo->employment_status }}</dd>
                 </dl>
@@ -95,5 +101,11 @@
         <a href="{{ route('admin.job_offers.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">戻る</a>
         <a href="{{ route('admin.job_offers.edit', ['job_offer' => $jobOfferInfo->id]) }}" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">編集</a>
     </div>
-
+    @if (session('message'))
+    <script>
+        $(function() {
+            toastr.success('{{ session("message") }}')
+        });
+    </script>
+    @endif
 </x-app-layout>

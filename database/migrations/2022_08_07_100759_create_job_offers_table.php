@@ -21,6 +21,8 @@ class CreateJobOffersTable extends Migration
             ->onDelete('cascade');
             $table->foreignId('job_category_id')
             ->constrained();
+            $table->foreignId('job_area_id')
+            ->constrained();
             $table->boolean('is_publish');
             $table->string('title');
             $table->string('employment_status');

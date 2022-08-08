@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\JobOffer;
 use App\Models\Company;
 use App\Models\JobCategory;
+use App\Models\JobArea;
 use Illuminate\Http\Request;
 
 class JobOffersController extends Controller
@@ -36,8 +37,9 @@ class JobOffersController extends Controller
     {
         $companies = Company::select('id', 'name')->get();
         $jobCategories = JobCategory::select('id', 'category_name')->get();
+        $jobAreas = JobArea::select('id', 'area_name')->get();
 
-        return view('admin.job_offers.create', compact('companies', 'jobCategories'));
+        return view('admin.job_offers.create', compact('companies', 'jobCategories', 'jobAreas'));
     }
 
     /**
@@ -52,6 +54,7 @@ class JobOffersController extends Controller
             'is_publish' => ['required', 'boolean'],
             'company_id' => ['required', 'integer'],
             'job_category_id' => ['required', 'integer'],
+            'job_area_id' => ['required', 'integer'],
             'title' => ['required', 'string'],
             'employment_status' => ['required', 'string'],
             'salary' => ['required', 'string'],
@@ -90,8 +93,10 @@ class JobOffersController extends Controller
     public function edit($id)
     {
         $jobOfferInfo = JobOffer::findOrFail($id);
+        $jobCategories = JobCategory::select('id', 'category_name')->get();
+        $jobAreas = JobArea::select('id', 'area_name')->get();
 
-        return view('admin.job_offers.edit', compact('jobOfferInfo'));
+        return view('admin.job_offers.edit', compact('jobOfferInfo', 'jobCategories', 'jobAreas'));
     }
 
     /**
