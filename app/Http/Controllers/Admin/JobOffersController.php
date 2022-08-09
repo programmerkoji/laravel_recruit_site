@@ -21,11 +21,21 @@ class JobOffersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $job_offers = JobOffer::with('company')->select('id', 'title', 'company_id', 'is_publish')->paginate(10);
 
-        return view('admin.job_offers.index', compact('job_offers'));
+        $keyword = $request->keyword;
+
+        $query = JobOffer::query();
+
+        if (!empty($keyword)) {
+            $query->where('title', 'like', '%' . $keyword . '%');
+        }
+        $posts = $query->get();
+
+        $job_offers = JobOffer::with('company')->select('id', 'title', 'company_id', 'is_publish')->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('admin.job_offers.index', compact('job_offers', 'posts'));
     }
 
     /**
