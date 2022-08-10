@@ -26,16 +26,15 @@ class JobOffersController extends Controller
 
         $keyword = $request->keyword;
 
-        $query = JobOffer::query();
+        $query = JobOffer::with('company')->select('id', 'title', 'company_id', 'is_publish')->orderBy('created_at', 'desc');
 
         if (!empty($keyword)) {
             $query->where('title', 'like', '%' . $keyword . '%');
         }
-        $posts = $query->get();
 
-        $job_offers = JobOffer::with('company')->select('id', 'title', 'company_id', 'is_publish')->orderBy('created_at', 'desc')->paginate(10);
+        $job_offers = $query->paginate(10);
 
-        return view('admin.job_offers.index', compact('job_offers', 'posts'));
+        return view('admin.job_offers.index', compact('job_offers', 'keyword'));
     }
 
     /**

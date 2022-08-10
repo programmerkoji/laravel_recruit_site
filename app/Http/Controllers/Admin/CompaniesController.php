@@ -18,11 +18,19 @@ class CompaniesController extends Controller
      *
      * @return \Illuminate\Http\Response
     */
-    public function index()
+    public function index(Request $request)
     {
-        $companies = Company::select('id', 'name', 'address', 'stuff_name')->paginate(10);
+        $keyword = $request->keyword;
 
-        return view('admin.companies.index', compact('companies'));
+        $query = Company::select('id', 'name', 'address', 'stuff_name');
+
+        if (!empty($keyword)) {
+            $query->where('name', 'like', '%' . $keyword . '%');
+        }
+
+        $companies = $query->paginate(10);
+
+        return view('admin.companies.index', compact('companies', 'keyword'));
     }
 
     /**
