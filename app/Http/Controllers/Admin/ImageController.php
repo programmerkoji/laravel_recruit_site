@@ -20,9 +20,18 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $images = Image::with('company')->paginate(12);
+        $keyword = $request->keyword;
+
+        $query = Image::with('company');
+
+        if (!empty($keyword)) {
+            $query->whereHas('company', function ($q) use($keyword) {
+                $q->where('name', 'like', '%' . $keyword . '%');
+            });
+        }
+        $images = $query->paginate(12);
 
         return view('admin.images.index', compact('images'));
     }
