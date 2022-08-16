@@ -27,10 +27,14 @@
                     <p class="w-1/4 pl-1 font-bold">掲載企業</p>
                     <div class="flex-auto">
                         <select name="company_id" class="bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 pl-3 pr-8 leading-8 transition-colors duration-200 ease-in-out">
+                            <option value="">選択してください</option>
                             @foreach ($companies as $company)
-                                <option value="{{ $company->id }}">{{ $company->name }}</option>
+                                <option value="{{ $company->id }}" @if($company->id == old('company_id')) selected @endif>{{ $company->name }}</option>
                             @endforeach
                         </select>
+                        @error('company_id')
+                        <span class="text-rose-700 mt-2 block w-full">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
             </div>
@@ -39,10 +43,14 @@
                     <p class="w-1/4 pl-1 font-bold">職種</p>
                     <div class="flex-auto">
                         <select name="job_category_id" class="bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 pl-3 pr-8 leading-8 transition-colors duration-200 ease-in-out">
+                            <option value="">選択してください</option>
                             @foreach ($jobCategories as $jobCategory)
-                                <option value="{{ $jobCategory->id }}">{{ $jobCategory->category_name }}</option>
+                                <option value="{{ $jobCategory->id }}" @if($jobCategory->id == old('job_category_id')) selected @endif>{{ $jobCategory->category_name }}</option>
                             @endforeach
                         </select>
+                        @error('job_category_id')
+                        <span class="text-rose-700 mt-2 block w-full">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
             </div>
@@ -51,10 +59,14 @@
                     <p class="w-1/4 pl-1 font-bold">エリア</p>
                     <div class="flex-auto">
                         <select name="job_area_id" class="bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 pl-3 pr-8 leading-8 transition-colors duration-200 ease-in-out">
+                            <option value="">選択してください</option>
                             @foreach ($jobAreas as $jobArea)
-                                <option value="{{ $jobArea->id }}">{{ $jobArea->area_name }}</option>
+                                <option value="{{ $jobArea->id }}" @if($jobArea->id == old('job_area_id')) selected @endif>{{ $jobArea->area_name }}</option>
                             @endforeach
                         </select>
+                        @error('job_area_id')
+                        <span class="text-rose-700 mt-2 block w-full">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
             </div>

@@ -146,5 +146,8 @@ return [
         'welfare' => '待遇・福利厚生',
         'holiday' => '休日・休暇',
         'file_name' => '画像',
+        'company_id' => '会社名',
+        'job_category_id' => '職種',
+        'job_area_id' => 'エリア',
     ],
 ];

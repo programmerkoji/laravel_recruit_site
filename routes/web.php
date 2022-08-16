@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\User\JobOffersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('user.welcome');
-});
+Route::get('/', [JobOffersController::class, 'index'])
+    ->name('user.job_offers');
+
+// Route::get('/', function () {
+//     return view('user.welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('user.dashboard');
