@@ -29,9 +29,4 @@ class Company extends Model
     {
         return $this->hasMany(JobOffer::class);
     }
-
-    public function image()
-    {
-        return $this->hasMany(Image::class);
-    }
 }

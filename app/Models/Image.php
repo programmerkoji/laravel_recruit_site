@@ -4,20 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Company;
+use App\Models\JobOffer;
 
 class Image extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'company_id',
+        'job_offer_id',
         'file_name',
         'title',
     ];
 
-    public function company()
+    public function job_offer()
     {
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(JobOffer::class);
     }
 }

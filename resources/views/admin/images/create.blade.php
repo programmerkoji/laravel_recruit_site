@@ -10,11 +10,11 @@
             @csrf
             <div class="p-4">
                 <div class="flex items-center">
-                    <p class="w-1/4 pl-1 font-bold">企業名</p>
+                    <p class="w-1/4 pl-1 font-bold">求人名</p>
                     <div class="flex-auto">
-                        <select name="company_id" class="bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 pl-3 pr-6 leading-8 transition-colors duration-200 ease-in-out">
-                            @foreach ($companies as $company)
-                                <option value="{{ $company->id }}">{{ $company->name }}</option>
+                        <select name="job_offer_id" class="bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 pl-3 pr-6 leading-8 transition-colors duration-200 ease-in-out">
+                            @foreach ($job_offers as $job_offer)
+                                <option value="{{ $job_offer->id }}">{{ $job_offer->title }}</option>
                             @endforeach
                         </select>
                     </div>

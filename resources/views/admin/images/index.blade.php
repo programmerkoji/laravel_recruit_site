@@ -29,7 +29,7 @@
                                 <img src="{{ asset('storage/' . $image->file_name)  }}" alt="">
                             </figure>
                             <p class="mb-1"><span class="font-bold">画像名：</span>{{ $image->title }}</p>
-                            <p class="mb-4"><span class="font-bold">企業名：</span>{{  $image->company->name }}</p>
+                            <p class="mb-4"><span class="font-bold">企業名：</span>{{  $image->job_offer->title }}</p>
                             <div class="flex items-center justify-center gap-4">
                                 <a href="{{ route('admin.images.edit', ['image' => $image->id]) }}" class="py-1 px-4 border border-green-600 rounded-full text-green-600 hover:text-green-900">編集</a>
                                 <form id="delete_{{ $image->id }}" action="{{ route('admin.images.destroy', ['image' => $image->id]) }}" method="post">

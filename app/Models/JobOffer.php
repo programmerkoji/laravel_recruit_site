@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Company;
 use App\Models\JobCategory;
 use App\Models\JobArea;
+use App\Models\Image;
 
 class JobOffer extends Model
 {
@@ -33,6 +34,11 @@ class JobOffer extends Model
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function image()
+    {
+        return $this->hasMany(Image::class);
     }
 
     public function job_category()

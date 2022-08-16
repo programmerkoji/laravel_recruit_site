@@ -11,9 +11,9 @@
             @method('PUT')
             <div class="p-4">
                 <div class="flex items-center">
-                    <p class="w-1/4 pl-1 font-bold">企業名</p>
+                    <p class="w-1/4 pl-1 font-bold">求人名</p>
                     <div class="flex-auto">
-                        <p>{{ $imageInfo->company->name }}</p>
+                        <p>{{ $imageInfo->job_offer->title }}</p>
                     </div>
                 </div>
             </div>

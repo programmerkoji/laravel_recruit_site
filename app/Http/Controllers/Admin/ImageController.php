@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Image;
-use App\Models\Company;
+use App\Models\JobOffer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -24,10 +24,10 @@ class ImageController extends Controller
     {
         $keyword = $request->keyword;
 
-        $query = Image::with('company');
+        $query = Image::with('job_offer');
 
         if (!empty($keyword)) {
-            $query->whereHas('company', function ($q) use($keyword) {
+            $query->whereHas('job_offer', function ($q) use($keyword) {
                 $q->where('name', 'like', '%' . $keyword . '%');
             });
         }
@@ -43,9 +43,9 @@ class ImageController extends Controller
      */
     public function create()
     {
-        $companies = Company::select('id', 'name')->get();
+        $job_offers = JobOffer::select('id', 'title')->get();
 
-        return view('admin.images.create', compact('companies'));
+        return view('admin.images.create', compact('job_offers'));
     }
 
     /**
@@ -64,7 +64,7 @@ class ImageController extends Controller
         $filePath = isset($imageFile) ? $imageFile->store('jobImages', 'public') : '';
 
         Image::create([
-            'company_id' => $request->company_id,
+            'job_offer_id' => $request->job_offer_id,
             'title' => $request->title,
             'file_name' => $filePath,
         ]);

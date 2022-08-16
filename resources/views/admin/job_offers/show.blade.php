@@ -95,6 +95,16 @@
                     <dd class="flex-auto">{{ $jobOfferInfo->free_text }}</dd>
                 </dl>
             </li>
+            <li class="p-4">
+                <dl class="flex items-center">
+                    <dt class="w-1/4 pl-1 font-bold">画像</dt>
+                    <dd class="flex gap-4 flex-wrap">
+                        @foreach ($jobOfferInfo->image as $jobOfferImage)
+                        <img src="{{ asset('storage/' . $jobOfferImage->file_name) }}" alt="" class="w-52">
+                        @endforeach
+                    </dd>
+                </dl>
+            </li>
         </ul>
     </div>
     <div class="flex justify-center items-center gap-6 pb-10">
