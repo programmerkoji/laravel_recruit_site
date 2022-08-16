@@ -24,7 +24,9 @@
                                 <a href="" class="word">{{ $job_offer->title }}</a>
                             </h3>
                             <div class="bl_media">
-                                <figure class="bl_media_imgWrapper"><img src="images/sample1.jpg" width="" height="" alt=""></figure>
+                                <figure class="bl_media_imgWrapper">
+                                    <img src="{{ asset('storage/' . $job_offer->image[0]->file_name) }}" alt="" class="w-52">
+                                </figure>
                                 <div class="bl_media_body">
                                     <dl class="bl_archive_def">
                                         <div>
