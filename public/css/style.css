@@ -149,7 +149,13 @@ common
     flex: 0 1 292px;
     height: 100%;
     position: sticky;
-    top: 80px;
+    top: 100px;
+}
+.ly_lower {
+    padding-top: 80px;
+}
+.ly_lower .ly_cont {
+    padding: 40px 0 80px;
 }
 .txt_bold {
     font-weight: bold;
@@ -177,6 +183,9 @@ common
     .ly_archive .ly_cont_main {
         order: 2;
     }
+    .ly_lower {
+        padding-top: 60px;
+    }
 }
 /************************
 header
@@ -189,6 +198,7 @@ header
     left: 0;
     z-index: 100;
     background-color: rgba(252, 252, 252, 0.9);
+    box-shadow: 0 1px 3px 3px rgba(0, 0, 0, 0.1);
 }
 .bl_head {
     display: flex;
@@ -459,6 +469,7 @@ footer
     }
     .bl_archive_bottom {
         gap: 16px;
+        padding: 16px 8px;
     }
     .bl_archive_endDate {
         width: 100%;
@@ -466,14 +477,16 @@ footer
     }
     .bl_archive_btnList {
         width: 100%;
+        justify-content: center;
+        gap: 8px;
         order: 1;
     }
     .bl_archive_btnItem {
-        max-width: 160px;
         width: 100%;
     }
     .bl_archive_btnItem > a {
         width: 100%;
+        font-size: 13px;
     }
 }
 
@@ -485,9 +498,95 @@ aside
     flex-direction: column;
     gap: 24px;
 }
+.bl_search {
+    border: 1px solid #b3b3b3;
+    border-radius: 4px;
+}
+.bl_search_inner {
+    border-bottom: 1px solid #b3b3b3;
+}
+.bl_search_item:not(:first-of-type) {
+    border-top: 1px solid #b3b3b3;
+}
+.bl_search_item {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px;
+}
+.bl_search_item .text {
+    width: 100%;
+    font-weight: bold;
+}
+.bl_checkbox_item > label {
+    cursor: pointer;
+}
+.bl_search_item .tagWrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+}
+.bl_search_item .tag {
+    font-size: 12px;
+    padding: 0 8px;
+    background: #eee;
+    border-radius: 4px;
+}
+.bl_search_item .tag > i {
+    margin-right: 2px;
+}
+
+/* チェックボックス */
+.bl_checkbox {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+}
+.bl_checkbox_item {
+    width: calc((100% - 8px) / 2);
+}
+.job_categories .bl_checkbox_item {
+    width: 100%;
+}
+.bl_checkbox_input + span {
+    position: relative;
+    padding-left: 24px;
+}
+.bl_checkbox_input + span::before {
+    content: "";
+    background: #fff;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #B0AB99;
+    border-radius: 2px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+.bl_checkbox_input + span::after {
+    content: "";
+    display: block;
+    background: transparent;
+    border-bottom: 2px solid #4d5fc3;
+    border-right: 2px solid #4d5fc3;
+    width: 8px;
+    height: 16px;
+    position: absolute;
+    left: 5px;
+    top: -4px;
+    transform: rotate(42deg);
+    opacity: 0;
+}
+.bl_checkbox_input:checked + span::after {
+    opacity: 1;
+}
 /* キーワード検索 */
 .bl_keywordSearch {
     position: relative;
+    width: 100%;
 }
 .bl_keywordSearch .fa-magnifying-glass {
     position: absolute;
@@ -502,150 +601,204 @@ aside
     border-radius: 4px;
     padding: 0 16px 0 40px;
 }
+/* 検索ボタン */
+.bl_search_btn {
+    width: 260px;
+    height: 40px;
+    display: block;
+    border-radius: 4px;
+    background: #4d5fc3;
+    color: #fcfcfc;
+    margin: 16px auto;
+}
 
-.bl_searchArea {
+/* 詳細ページのCTA */
+.bl_cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    width: 100%;
+}
+.bl_cta_item {
+    width: 100%;
+}
+.bl_cta_btn {
+    width: 100%;
+    height: 48px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bl_cta_btn.apply {
+    background: #4d5fc3;
+    color: #fcfcfc;
+    position: relative;
+}
+.bl_cta_btn.apply::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #fcfcfc;
+    border-right: 2px solid #fcfcfc;
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%) rotate(45deg);
+}
+.bl_cta_btn.favorite {
+    border: 1px solid #444;
+    color: #444;
+}
+.bl_cta_btn .fa-star {
+    margin-right: 8px;
+}
+/* 会社情報 */
+.bl_companyInfo {
     border: 1px solid #b3b3b3;
     border-radius: 4px;
+    margin-top: 16px;
 }
-.bl_searchArea_item:not(:first-of-type) {
-    border-top: 1px solid #b3b3b3;
-}
-.bl_searchArea_item {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+.bl_companyInfo_ttl {
     padding: 16px;
-    cursor: pointer;
-}
-.bl_searchArea_item .text {
-    width: 100%;
-    font-weight: bold;
-}
-.bl_searchArea_item .tagWrapper {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px 8px;
-}
-.bl_searchArea_item .tag {
-    font-size: 12px;
-    padding: 0 8px;
+    border-bottom: 1px solid #b3b3b3;
     background: #eee;
-    border-radius: 4px;
 }
-.bl_searchArea_item .tag > i {
-    margin-right: 2px;
-}
-
-/* モーダル */
-.bl_overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 10000;
-    display: none;
-}
-.bl_modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    max-width: 730px;
-    width: 100%;
-    padding: 0 20px;
-    transform: translate(-50%, -50%);
-    z-index: 10001;
-    display: none;
-}
-.bl_modal_body {
-    position: relative;
-    background: #fff;
-    border-radius: 8px;
-    width: 100%;
-    margin: 0 auto;
-    overflow: hidden;
-}
-.bl_modal_close {
-    position: absolute;
-    top: 20px;
-    right: 16px;
-}
-.bl_modal_close_inner {
-    display: block;
-    width: 24px;
-    height: 24px;
-    position: relative;
-}
-.bl_modal_close_inner > span {
-    width: 20px;
-    height: 3px;
-    background: #707070;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-}
-.bl_modal_close_inner > span:first-of-type {
-    transform: translate(-50%, -50%) rotate(45deg);
-}
-.bl_modal_close_inner > span:last-of-type {
-    transform: translate(-50%, -50%) rotate(135deg);
-}
-.bl_modal_ttl {
-    font-size: 18px;
-    text-align: center;
-    padding: 16px;
-    background: #eee;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-.bl_modal_body .el_secTtl.with_icon > span {
-    display: inline-flex;
-    flex-direction: column;
-}
-.bl_modal_list {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 16px 40px;
-}
-.bl_modal_item {
-    width: 33%;
-    padding: 16px 16px 16px 20px;
-    color: #4d5fc3;
-    position: relative;
-}
-.bl_modal_item::before {
-    content: "\f0a9";
+.bl_companyInfo_ttl::before {
+    content: "\f1ad";
     font-family: "Font Awesome 6 Free";
     font-weight: 700;
+    margin-right: 8px;
+}
+.bl_companyInfo_def {
+    padding: 16px;
+}
+.bl_companyInfo_def > div {
+    padding-bottom: 4px;
+}
+.bl_companyInfo_def > div:not(:first-of-type) {
+    padding-top: 4px;
+}
+.bl_companyInfo_dttl {
+    font-weight: bold;
+    padding-left: 12px;
+    position: relative;
+}
+.bl_companyInfo_dttl::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: #444;
     position: absolute;
-    top: 16px;
+    top: 50%;
     left: 0;
+    transform: translateY(-50%);
 }
 @media screen and (max-width : 767px){
-    .bl_modal_ttl {
-        font-size: 16px;
-    }
-    .bl_modal_list {
-        padding: 16px 24px;
-    }
-    .bl_modal_item {
-        width: 50%;
-        padding: 8px 8px 8px 16px;
-    }
-    .bl_modal_item::before {
-        top: 8px;
-    }
+
 }
-@media screen and (max-width: 767px) {
-    .bl_category_ttl {
-        font-size: 16px;
-        padding: 8px 16px;
+
+/************************
+求人詳細ページ
+*************************/
+.bl_breadCrumbs {
+    margin-top: 8px;
+}
+.bl_breadCrumbs_list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.bl_breadCrumbs_item {
+    font-size: 12px;
+}
+.bl_breadCrumbs_item:not(:first-of-type)::before {
+    content: "＞";
+    margin-right: 4px;
+}
+.bl_breadCrumbs_item .fa-house {
+    font-size: 14px;
+}
+
+.bl_jobOffer_ttl {
+    border-bottom: 1px solid #b3b3b3;
+    padding-bottom: 8px;
+    margin-bottom: 24px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #4d5fc3;
+    line-height: 1.4;
+}
+.bl_jobOffer_freeTxt {
+    margin-top: 1em;
+}
+
+.bl_jobOffer .el_secTtl {
+    font-size: 18px;
+    color: #4d5fc3;
+    padding-left: 1.5em;
+    margin-bottom: 8px;
+    position: relative;
+}
+.bl_jobOffer .el_secTtl::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #4d5fc3;
+    position: absolute;
+    top: 4px;
+    left: 0;
+}
+.bl_jobOffer .el_secTtl::after {
+    content: "";
+    width: 8px;
+    height: 10px;
+    border-bottom: 2px solid #fcfcfc;
+    border-right: 2px solid #fcfcfc;
+    position: absolute;
+    top: 7px;
+    left: 6px;
+    transform: rotate(45deg);
+}
+
+.bl_jobContent {
+    margin-top: 24px;
+}
+
+.bl_detail {
+    margin-top: 24px;
+}
+.bl_detail_def {
+    border: 1px solid #b3b3b3;
+}
+.bl_detail_item {
+    display: flex;
+    flex-wrap: wrap;
+}
+.bl_detail_item:not(:last-of-type) {
+    border-bottom: 1px solid #b3b3b3;
+}
+.bl_detail_dttl {
+    flex: 0 1 160px;
+    font-weight: bold;
+    background: #eee;
+    padding: 16px 8px 16px 16px;
+    border-right: 1px solid #b3b3b3;
+}
+.bl_detail_ddata {
+    flex: 1;
+    padding: 16px 8px 16px 16px;
+}
+@media screen and (max-width : 750px){
+    .bl_detail_dttl {
+        flex: 100%;
+        border-right: none;
+        border-bottom: 1px solid #b3b3b3;
     }
-    .bl_category_item > a {
-        padding: 12px 16px;
-    }
-    .bl_profile_imgWrapper {
-        width: 180px;
+    .bl_detail_ddata {
+        flex: 100%;
     }
 }

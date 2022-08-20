@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>WEB人 | WEB制作専門の求人サイト</title>
+    <meta name="description" content="Web制作専門の求人サイト。Webで活躍できる人材になりたいというあなたも想いを応援します。">
+
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="https://kit.fontawesome.com/77a829ded7.js" crossorigin="anonymous"></script>
 </head>
@@ -12,9 +18,7 @@
     <!-- header -->
     @include('user.include.header')
 
-    <main>
-        @yield('user.index')
-    </main>
+    @yield('content')
 
     <!-- footer -->
     @include('user.include.footer')

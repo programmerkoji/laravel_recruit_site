@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [JobOffersController::class, 'index'])
-    ->name('user.job_offers');
+    ->name('index');
+Route::get('/job_offers/{job_offer}', [JobOffersController::class, 'show'])
+    ->name('show');
 
 // Route::get('/', function () {
 //     return view('user.welcome');

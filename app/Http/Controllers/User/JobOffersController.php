@@ -4,10 +4,6 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\JobOffer;
-use App\Models\image;
-use App\Models\Company;
-use App\Models\JobCategory;
-use App\Models\JobArea;
 use Illuminate\Http\Request;
 
 class JobOffersController extends Controller
@@ -20,5 +16,13 @@ class JobOffersController extends Controller
         $employment_status = JobOffer::where('is_publish', true)->groupBy('employment_status')->get('employment_status');
 
         return view('user.index', compact('job_offers', 'job_areas', 'job_categories', 'employment_status'));
+    }
+
+    public function show($id)
+    {
+        $jobOfferInfo = JobOffer::findOrFail($id);
+        // dd($jobOfferInfo->image);
+
+        return view('user.show', compact('jobOfferInfo'));
     }
 }
