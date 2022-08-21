@@ -27,18 +27,26 @@
                 </label>
             </div>
             <div class="p-4">
-                <div class="flex items-center">
-                    <p class="w-1/4 pl-1 font-bold">掲載状況</p>
+                <label class="flex items-center">
+                    <span class="w-1/4 pl-1 font-bold">掲載開始日</span>
                     <span class="flex-auto">
-                        <div class="w-full flex gap-4 items-center">
-                            <label><input type="radio" name="is_publish" value="1" class="mr-2" @if ($jobOfferInfo->is_publish === 1) { checked } @endif><span>掲載中</span></label>
-                            <label><input type="radio" name="is_publish" value="0" class="mr-2" @if ($jobOfferInfo->is_publish === 0) { checked } @endif><span>非掲載</span></label>
-                        </div>
-                        @error('is_publish')
+                        <input type="text" name="posting_start" id="publish_date" value="{{ $jobOfferInfo->posting_start->format('Y/m/d') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        @error('posting_start')
                         <span class="text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
                     </span>
-                </div>
+                </label>
+            </div>
+            <div class="p-4">
+                <label class="flex items-center">
+                    <span class="w-1/4 pl-1 font-bold">掲載終了日</span>
+                    <span class="flex-auto">
+                        <input type="text" name="posting_end" id="publish_date" value="{{ $jobOfferInfo->posting_end->format('Y/m/d') }}" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        @error('posting_end')
+                        <span class="text-rose-700 mt-2">{{ $message }}</span>
+                        @enderror
+                    </span>
+                </label>
             </div>
             <div class="p-4">
                 <div class="flex items-center">
@@ -166,4 +174,5 @@
         </form>
     </div>
 
+    <script src="{{ mix('js/flatpickr.js') }}"></script>
 </x-app-layout>

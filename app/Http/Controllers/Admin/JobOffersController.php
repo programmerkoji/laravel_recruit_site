@@ -8,6 +8,7 @@ use App\Models\Company;
 use App\Models\JobCategory;
 use App\Models\JobArea;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class JobOffersController extends Controller
 {
@@ -26,7 +27,7 @@ class JobOffersController extends Controller
 
         $keyword = $request->keyword;
 
-        $query = JobOffer::with('company')->select('id', 'title', 'company_id', 'is_publish')->orderBy('created_at', 'desc');
+        $query = JobOffer::with('company')->select('id', 'title', 'company_id', 'posting_start', 'posting_end')->orderBy('created_at', 'desc');
 
         if (!empty($keyword)) {
             $query->where('title', 'like', '%' . $keyword . '%');
@@ -34,7 +35,9 @@ class JobOffersController extends Controller
 
         $job_offers = $query->paginate(10);
 
-        return view('admin.job_offers.index', compact('job_offers', 'keyword'));
+        $date = Carbon::today();
+
+        return view('admin.job_offers.index', compact('job_offers', 'keyword', 'date'));
     }
 
     /**
@@ -60,10 +63,11 @@ class JobOffersController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'is_publish' => ['required', 'boolean'],
             'company_id' => ['required', 'integer'],
             'job_category_id' => ['required', 'integer'],
             'job_area_id' => ['required', 'integer'],
+            'posting_start' => ['required'],
+            'posting_end' => ['required'],
             'title' => ['required', 'string'],
             'employment_status' => ['required', 'string'],
             'salary' => ['required', 'string'],
@@ -118,7 +122,6 @@ class JobOffersController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'is_publish' => ['required', 'boolean'],
             'title' => ['required', 'string'],
             'employment_status' => ['required', 'string'],
             'salary' => ['required', 'string'],

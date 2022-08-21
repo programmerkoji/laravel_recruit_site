@@ -17,56 +17,56 @@
                     @if (isset($job_offers))
                     <ul class="bl_archive_list">
                         @foreach ($job_offers as $job_offer)
-                        <li class="bl_archive_item">
-                            <div class="bl_archive_inner">
-                                <!-- /.bl_archive_inner -->
-                                <h3 class="bl_archive_ttl">
-                                    <span class="company_name">{{ $job_offer->company->name }}</span>
-                                    <a href="{{ route('user.show', ['job_offer' => $job_offer->id]) }}" class="word">{{ $job_offer->title }}</a>
-                                </h3>
-                                <div class="bl_media">
-                                    @if (isset($job_offer->image[0]))
-                                    <figure class="bl_media_imgWrapper">
-                                        <img src="{{ asset('storage/' . $job_offer->image[0]->file_name) }}" alt="" class="w-52">
-                                    </figure>
-                                    @endif
-                                    <div class="bl_media_body">
-                                        <dl class="bl_archive_def">
-                                            <div>
-                                                <dt class="bl_archive_dttl">勤務地</dt>
-                                                <dd class="bl_archive_ddata">{{ $job_offer->job_area->area_name }}</dd>
-                                            </div>
-                                            <div>
-                                                <dt class="bl_archive_dttl">勤務時間</dt>
-                                                <dd class="bl_archive_ddata">{{ $job_offer->job_time }}</dd>
-                                            </div>
-                                            <div>
-                                                <dt class="bl_archive_dttl">雇用形態</dt>
-                                                <dd class="bl_archive_ddata">{{ $job_offer->employment_status }}</dd>
-                                            </div>
-                                            <div>
-                                                <dt class="bl_archive_dttl">給与</dt>
-                                                <dd class="bl_archive_ddata">{{ $job_offer->salary }}</dd>
-                                            </div>
-                                        </dl>
-                                        <!-- /.bl_archive_def -->
+                            <li class="bl_archive_item">
+                                <div class="bl_archive_inner">
+                                    <!-- /.bl_archive_inner -->
+                                    <h3 class="bl_archive_ttl">
+                                        <span class="company_name">{{ $job_offer->company->name }}</span>
+                                        <a href="{{ route('user.show', ['job_offer' => $job_offer->id]) }}" class="word">{{ $job_offer->title }}</a>
+                                    </h3>
+                                    <div class="bl_media">
+                                        @if (isset($job_offer->image[0]))
+                                        <figure class="bl_media_imgWrapper">
+                                            <img src="{{ asset('storage/' . $job_offer->image[0]->file_name) }}" alt="" class="w-52">
+                                        </figure>
+                                        @endif
+                                        <div class="bl_media_body">
+                                            <dl class="bl_archive_def">
+                                                <div>
+                                                    <dt class="bl_archive_dttl">勤務地</dt>
+                                                    <dd class="bl_archive_ddata">{{ $job_offer->job_area->area_name }}</dd>
+                                                </div>
+                                                <div>
+                                                    <dt class="bl_archive_dttl">勤務時間</dt>
+                                                    <dd class="bl_archive_ddata">{{ $job_offer->job_time }}</dd>
+                                                </div>
+                                                <div>
+                                                    <dt class="bl_archive_dttl">雇用形態</dt>
+                                                    <dd class="bl_archive_ddata">{{ $job_offer->employment_status }}</dd>
+                                                </div>
+                                                <div>
+                                                    <dt class="bl_archive_dttl">給与</dt>
+                                                    <dd class="bl_archive_ddata">{{ $job_offer->salary }}</dd>
+                                                </div>
+                                            </dl>
+                                            <!-- /.bl_archive_def -->
+                                        </div>
+                                        <!-- /.bl_media_body -->
                                     </div>
-                                    <!-- /.bl_media_body -->
+                                    <!-- /.bl_media -->
                                 </div>
-                                <!-- /.bl_media -->
-                            </div>
-                            <!-- /.bl_archive_inner -->
-                            <div class="bl_archive_bottom">
-                                <p class="bl_archive_endDate"><span class="label">掲載終了</span><i class="fa-regular fa-clock"></i>2022/10/08</p>
-                                <ul class="bl_archive_btnList">
-                                    <li class="bl_archive_btnItem"><a href="" class="favorite">お気に入りに追加</a></li>
-                                    <li class="bl_archive_btnItem"><a href="{{ route('user.show', ['job_offer' => $job_offer->id]) }}" class="more">詳細を見る</a></li>
-                                </ul>
-                                <!-- /.bl_archive_btnList -->
-                            </div>
-                            <!-- /.bl_archive_bottom -->
-                        </li>
-                        <!-- /.bl_archive_item -->
+                                <!-- /.bl_archive_inner -->
+                                <div class="bl_archive_bottom">
+                                    <p class="bl_archive_endDate"><span class="label">掲載終了</span><i class="fa-regular fa-clock"></i>{{ $job_offer->posting_end->format('Y/m/d') }}</p>
+                                    <ul class="bl_archive_btnList">
+                                        <li class="bl_archive_btnItem"><a href="" class="favorite">お気に入りに追加</a></li>
+                                        <li class="bl_archive_btnItem"><a href="{{ route('user.show', ['job_offer' => $job_offer->id]) }}" class="more">詳細を見る</a></li>
+                                    </ul>
+                                    <!-- /.bl_archive_btnList -->
+                                </div>
+                                <!-- /.bl_archive_bottom -->
+                            </li>
+                            <!-- /.bl_archive_item -->
                         @endforeach
                     </ul>
                     <!-- /.bl_archive_list -->

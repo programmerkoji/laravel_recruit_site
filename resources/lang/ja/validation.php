@@ -149,5 +149,7 @@ return [
         'company_id' => '会社名',
         'job_category_id' => '職種',
         'job_area_id' => 'エリア',
+        'posting_start' => '掲載開始日',
+        'posting_end' => '掲載終了日',
     ],
 ];

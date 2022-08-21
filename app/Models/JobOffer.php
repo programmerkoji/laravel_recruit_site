@@ -17,6 +17,9 @@ class JobOffer extends Model
         'company_id',
         'job_category_id',
         'job_area_id',
+        'posting_start',
+        'posting_end',
+        'is_publish',
         'title',
         'employment_status',
         'salary',
@@ -27,8 +30,12 @@ class JobOffer extends Model
         'holiday',
         'qualification',
         'recruitment_count',
-        'is_publish',
         'free_text',
+    ];
+
+    protected $dates = [
+        'posting_start',
+        'posting_end',
     ];
 
     public function company()

@@ -34,7 +34,7 @@
                                     掲載企業名
                                 </th>
                                 <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal">
-                                    掲載状況
+                                    掲載期間
                                 </th>
                                 <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal"></th>
                             </tr>
@@ -53,11 +53,7 @@
                                     </p>
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    @if ($job_offer->is_publish)
-                                        <p class="inline-block py-1 px-2 border border-green-600 rounded-full text-green-600">掲載中</p>
-                                    @else
-                                        <p class="inline-block py-1 px-2 border border-red-600 rounded-full text-red-600">非掲載</p>
-                                    @endif
+                                    {{ $job_offer->posting_start->format('Y/m/d') }} 〜 {{ $job_offer->posting_end->format('Y/m/d') }}
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <div class="flex items-center justify-center gap-4">

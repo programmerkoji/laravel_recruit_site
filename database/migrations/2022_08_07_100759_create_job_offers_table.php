@@ -23,7 +23,8 @@ class CreateJobOffersTable extends Migration
             ->constrained();
             $table->foreignId('job_area_id')
             ->constrained();
-            $table->boolean('is_publish');
+            $table->date('posting_start');
+            $table->date('posting_end');
             $table->string('title');
             $table->string('employment_status');
             $table->string('salary');
@@ -34,6 +35,7 @@ class CreateJobOffersTable extends Migration
             $table->string('qualification')->nullable();
             $table->tinyInteger('recruitment_count')->nullable();
             $table->text('free_text')->nullable();
+            $table->boolean('is_publish')->default(true);
             $table->timestamps();
         });
     }
