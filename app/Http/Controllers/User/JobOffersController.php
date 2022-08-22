@@ -9,13 +9,37 @@ use Carbon\Carbon;
 
 class JobOffersController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $areas = $request->area;
+        $categories = $request->category;
+        $keyword = $request->keyword;
+        $sort = $request->sort;
+
         $date = Carbon::today();
-        $job_offers = JobOffer::with(['company', 'job_category', 'job_area', 'image'])
+
+        $query = JobOffer::with(['company', 'job_category', 'job_area', 'image'])
         ->whereDate('posting_start', '<=' , $date)
         ->whereDate('posting_end', '>=' , $date)
-        ->get();
+        ->orderBy('posting_start', 'desc');
+
+        if (!empty($areas)) {
+            $query->whereHas('job_area', function ($q) use($areas) {
+                $q->whereIn('id', $areas);
+            });
+        }
+        if (!empty($categories)) {
+            $query->whereHas('job_category', function ($q) use($categories) {
+                $q->whereIn('id', $categories);
+            });
+        }
+        if (!empty($keyword)) {
+            $query->where(function ($q) use($keyword) {
+                $q->where('job_content', 'like', '%' . $keyword . '%');
+                $q->orWhere('free_text', 'like', '%' . $keyword . '%');
+            });
+        }
+        $job_offers = $query->paginate(10);
 
         $job_areas = JobOffer::with(['job_area'])
         ->whereDate('posting_start', '<=' , $date)
@@ -33,7 +57,7 @@ class JobOffersController extends Controller
         ->groupBy('employment_status')
         ->get('employment_status');
 
-        return view('user.index', compact('job_offers', 'job_areas', 'job_categories', 'employment_status'));
+        return view('user.index', compact('job_offers', 'keyword', 'job_areas', 'job_categories', 'employment_status'));
     }
 
     public function show($id)

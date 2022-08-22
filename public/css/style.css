@@ -603,7 +603,8 @@ aside
 }
 /* 検索ボタン */
 .bl_search_btn {
-    width: 260px;
+    max-width: 260px;
+    width: 100%;
     height: 40px;
     display: block;
     border-radius: 4px;

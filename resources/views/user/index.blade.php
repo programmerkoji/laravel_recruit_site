@@ -75,7 +75,15 @@
                 <!-- aside -->
                 <aside class="ly_aside">
                     <div class="ly_aside_inner bl_aside">
-                        <form action="" method="get" class="bl_search">
+                        <form action="{{ route('user.index') }}" method="get" class="bl_sort">
+                            <select name="sort" id="sort">
+                                <option value="1" @if(\Request::get('sort') === '1') selected @endif>新着順</option>
+                                <option value="2" @if(\Request::get('sort') === '2') selected @endif>古い順</option>
+                            </select>
+                            <button type="submit">並び替える</button>
+                        </form>
+                        <!-- /.bl_sort -->
+                        <form action="{{ route('user.index') }}" method="get" class="bl_search">
                             <ul class="bl_search_inner">
                                 <li class="bl_search_item">
                                     <p class="text">エリアで検索</p>
@@ -83,7 +91,7 @@
                                         @foreach ($job_areas as $job_area)
                                         <li class="bl_checkbox_item">
                                             <label>
-                                                <input type="checkbox" name="" class="bl_checkbox_input">
+                                                <input type="checkbox" name="area[]" value="{{ $job_area->job_area->id }}" class="bl_checkbox_input">
                                                 <span>{{ $job_area->job_area->area_name }}</span>
                                             </label>
                                         </li>
@@ -97,22 +105,8 @@
                                         @foreach ($job_categories as $job_category)
                                         <li class="bl_checkbox_item">
                                             <label>
-                                                <input type="checkbox" name="" class="bl_checkbox_input">
+                                                <input type="checkbox" name="category[]" class="bl_checkbox_input" value="{{ $job_category->job_category->id }}">
                                                 <span>{{ $job_category->job_category->category_name }}</span>
-                                            </label>
-                                        </li>
-                                        @endforeach
-                                    </ul>
-                                    <!-- /.bl_checkbox -->
-                                </li>
-                                <li class="bl_search_item">
-                                    <p class="text">雇用形態で検索</p>
-                                    <ul class="bl_checkbox">
-                                        @foreach ($employment_status as $value)
-                                        <li class="bl_checkbox_item">
-                                            <label>
-                                                <input type="checkbox" name="" class="bl_checkbox_input">
-                                                <span>{{ $value->employment_status }}</span>
                                             </label>
                                         </li>
                                         @endforeach
@@ -122,7 +116,7 @@
                                 <li class="bl_search_item">
                                     <div class="bl_keywordSearch">
                                         <i class="fa-solid fa-magnifying-glass"></i>
-                                        <input type="search" name="" placeholder="キーワードで検索">
+                                        <input type="search" name="keyword" value="@if(isset($keyword)){{ $keyword }}@endif" placeholder="キーワードで検索">
                                     </div>
                                     <!-- /.bl_keywordSearch -->
                                 </li>
@@ -130,72 +124,6 @@
                             <!-- /.bl_search_inner -->
                             <button type="submit" class="bl_search_btn">検索する</button>
                         </form>
-                        <!-- モーダル中身 -->
-                        {{-- <div class="bl_overlay"></div>
-                        <div class="bl_modal" data-id="modal_area">
-                            <div class="bl_modal_body">
-                                <button type="button" class="bl_modal_close">
-                                    <span class="bl_modal_close_inner">
-                                        <span></span>
-                                        <span></span>
-                                    </span>
-                                </button>
-                                <h3 class="bl_modal_ttl">エリアで検索</h3>
-                                <ul class="bl_modal_list">
-                                    @foreach ($job_areas as $job_area)
-                                    <li class="bl_modal_item">{{ $job_area->job_area->area_name }}</li>
-                                    @endforeach
-                                </ul>
-                                <!-- /.bl_modal_list -->
-                            </div>
-                            <!-- /.bl_modal_body -->
-                        </div>
-                        <!-- /.bl_modal -->
-                        <div class="bl_modal" data-id="modal_jobCategory">
-                            <div class="bl_modal_body">
-                                <button type="button" class="bl_modal_close">
-                                    <span class="bl_modal_close_inner">
-                                        <span></span>
-                                        <span></span>
-                                    </span>
-                                </button>
-                                <h3 class="bl_modal_ttl">職種で検索</h3>
-                                <ul class="bl_modal_list">
-                                    @foreach ($job_categories as $job_category)
-                                    <li class="bl_modal_item">{{ $job_category->job_category->category_name }}</li>
-                                    @endforeach
-                                </ul>
-                                <!-- /.bl_modal_list -->
-                            </div>
-                            <!-- /.bl_modal_body -->
-                        </div>
-                        <!-- /.bl_modal -->
-                        <div class="bl_modal" data-id="modal_employment_status">
-                            <div class="bl_modal_body">
-                                <button type="button" class="bl_modal_close">
-                                    <span class="bl_modal_close_inner">
-                                        <span></span>
-                                        <span></span>
-                                    </span>
-                                </button>
-                                <h3 class="bl_modal_ttl">雇用形態で検索</h3>
-                                <ul class="bl_modal_list">
-                                    @foreach ($employment_status as $value)
-                                    <li class="bl_modal_item">{{ $value->employment_status }}</li>
-                                    @endforeach
-                                </ul>
-                                <!-- /.bl_modal_list -->
-                            </div>
-                            <!-- /.bl_modal_body -->
-                        </div>
-                        <!-- /.bl_modal -->
-
-                        <div class="bl_keywordSearch">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <input type="search" name="" placeholder="キーワードで検索">
-                        </div>
-                        <!-- /.bl_keywordSearch -->
-                        --}}
                     </div>
                     <!-- /.ly_aside_inner -->
                 </aside>
