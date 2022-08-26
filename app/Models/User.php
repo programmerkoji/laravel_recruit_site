@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Bookmark;
+use App\Models\JobOffer;
 
 class User extends Authenticatable
 {
@@ -41,4 +43,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function bookmarks()
+    {
+        return $this->hasMany(Bookmark::class);
+    }
+
+    public function bookmark_job_offers()
+    {
+        return $this->belongsToMany(JobOffer::class, 'bookmarks', 'user_id', 'job_offer_id');
+    }
+
+    public function is_bookmark($jobOfferId)
+    {
+        return $this->bookmarks()->where('job_offer_id', $jobOfferId)->exists();
+    }
 }

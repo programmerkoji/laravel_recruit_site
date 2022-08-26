@@ -84,7 +84,24 @@
                 <aside class="ly_aside">
                     <ul class="bl_cta">
                         <li class="bl_cta_item"><a href="" class="bl_cta_btn apply">この求人に応募</a></li>
-                        <li class="bl_cta_item"><a href="" class="bl_cta_btn favorite"><i class="fa-regular fa-star"></i>お気に入りに追加</a></li>
+                        <li class="bl_cta_item">
+                            @if (auth('users')->user())
+                                @if (!Auth::user()->is_bookmark($jobOfferInfo->id))
+                                <form action="{{ route('user.bookmark.store', $jobOfferInfo) }}" method="post">
+                                    @csrf
+                                    <button type="submit" class="bl_cta_btn favorite"><i class="fa-regular fa-star"></i>お気に入りに追加</button>
+                                </form>
+                                @else
+                                <form action="{{ route('user.bookmark.destroy', $jobOfferInfo) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="bl_cta_btn favorite"><i class="fa-regular fa-star"></i>お気に入りを解除</button>
+                                </form>
+                                @endif
+                            @else
+                                <a href="{{ route('user.login') }}" class="bl_cta_btn favorite"><i class="fa-regular fa-star"></i>お気に入りに追加</a>
+                            @endif
+                        </li>
                     </ul>
                     <!-- /.bl_cta -->
                     <div class="bl_companyInfo">

@@ -16,12 +16,7 @@ class JobOffersController extends Controller
         $keyword = $request->keyword;
         $sort = $request->sort;
 
-        $date = Carbon::today();
-
-        $query = JobOffer::with(['company', 'job_category', 'job_area', 'image'])
-        ->whereDate('posting_start', '<=' , $date)
-        ->whereDate('posting_end', '>=' , $date)
-        ->orderBy('posting_start', 'desc');
+        $query = JobOffer::with(['company', 'job_category', 'job_area', 'image'])->postingPeriod()->orderBy('posting_start', 'desc');
 
         if (!empty($areas)) {
             $query->whereHas('job_area', function ($q) use($areas) {
@@ -41,23 +36,11 @@ class JobOffersController extends Controller
         }
         $job_offers = $query->paginate(10);
 
-        $job_areas = JobOffer::with(['job_area'])
-        ->whereDate('posting_start', '<=' , $date)
-        ->whereDate('posting_end', '>=' , $date)
-        ->groupBy('job_area_id')
-        ->get('job_area_id');
+        $job_areas = JobOffer::getAreas();
 
-        $job_categories = JobOffer::with(['job_category'])
-        ->whereDate('posting_start', '<=' , $date)
-        ->whereDate('posting_end', '>=' , $date)
-        ->groupBy('job_category_id')
-        ->get('job_category_id');
+        $job_categories = JobOffer::getCategories();
 
-        $employment_status = JobOffer::where('is_publish', true)
-        ->groupBy('employment_status')
-        ->get('employment_status');
-
-        return view('user.index', compact('job_offers', 'keyword', 'job_areas', 'job_categories', 'employment_status'));
+        return view('user.index', compact('job_offers', 'keyword', 'job_areas', 'job_categories'));
     }
 
     public function show($id)
@@ -65,5 +48,16 @@ class JobOffersController extends Controller
         $jobOfferInfo = JobOffer::findOrFail($id);
 
         return view('user.show', compact('jobOfferInfo'));
+    }
+
+    public function bookmark_job_offers(Request $request)
+    {
+        $job_offers = \Auth::user()->bookmark_job_offers()->postingPeriod()->orderBy('posting_start', 'desc')->paginate(10);
+
+        $job_areas = JobOffer::getAreas();
+
+        $job_categories = JobOffer::getCategories();
+
+        return view('user.bookmarks', compact('job_offers', 'job_areas', 'job_categories'));
     }
 }

@@ -8,6 +8,7 @@ use App\Models\Company;
 use App\Models\JobCategory;
 use App\Models\JobArea;
 use App\Models\Image;
+use App\Models\Bookmark;
 
 class JobOffer extends Model
 {
@@ -56,5 +57,36 @@ class JobOffer extends Model
     public function job_area()
     {
         return $this->belongsTo(JobArea::class);
+    }
+
+    public function bookmarks()
+    {
+        return $this->hasMany(Bookmark::class);
+    }
+
+    public static function getAreas()
+    {
+        $job_areas = JobOffer::with(['job_area'])
+        ->postingPeriod()
+        ->groupBy('job_area_id')
+        ->get('job_area_id');
+
+        return $job_areas;
+    }
+
+    public static function getCategories()
+    {
+        $job_categories = JobOffer::with(['job_category'])
+        ->postingPeriod()
+        ->groupBy('job_category_id')
+        ->get('job_category_id');
+
+        return $job_categories;
+    }
+
+    public function scopePostingPeriod($query)
+    {
+        $query->whereDate('posting_start', '<=' , today())
+        ->whereDate('posting_end', '>=' , today());
     }
 }

@@ -157,6 +157,40 @@ common
 .ly_lower .ly_cont {
     padding: 40px 0 80px;
 }
+.ly_lower_mv {
+    background: url(../images/mv_bg.jpg) bottom center/cover no-repeat;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.ly_lower_mv::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.el_lower_headTtl {
+    display: flex;
+    flex-direction: column;
+    color: #fcfcfc;
+    gap: 8px;
+}
+.el_lower_headTtl > span {
+    font-size: 28px;
+    display: inline-block;
+    border-bottom: 1px solid #fcfcfc;
+    padding-bottom: 2px;
+    align-self: flex-start;
+}
+.el_lower_headTtl::after {
+    content: "Bookmarks";
+    font-size: 16px;
+    font-weight: normal;
+}
 .txt_bold {
     font-weight: bold;
 }
@@ -218,6 +252,10 @@ header
 }
 .bl_nav_item {
     height: 100%;
+}
+.bl_nav_item > form {
+    height: 100%;
+    cursor: pointer;
 }
 .bl_nav_link {
     font-size: 12px;
@@ -424,7 +462,7 @@ footer
     align-items: center;
     gap: 16px;
 }
-.bl_archive_btnItem > a {
+.bl_archive_btn {
     display: block;
     width: 160px;
     padding: 8px;

@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             JobAreaSeeder::class,
             JobOfferSeeder::class,
             ImageSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }
