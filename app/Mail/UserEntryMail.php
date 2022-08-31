@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ContactSendMail extends Mailable
+class UserEntryMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -20,13 +20,15 @@ class ContactSendMail extends Mailable
     private $birth;
     private $career;
     private $appeal;
+    private $company_name;
+    private $job_offer_title;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($inputs)
+    public function __construct($inputs, $jobOfferInfo)
     {
         $this->name = $inputs['name'];
         $this->kana = $inputs['kana'];
@@ -37,6 +39,8 @@ class ContactSendMail extends Mailable
         $this->birth = $inputs['birth'];
         $this->career = $inputs['career'];
         $this->appeal = $inputs['appeal'];
+        $this->company_name = $jobOfferInfo->company->name;
+        $this->job_offer_title = $jobOfferInfo->title;
     }
 
     /**
@@ -59,6 +63,8 @@ class ContactSendMail extends Mailable
             'birth'  => $this->birth,
             'career'  => $this->career,
             'appeal'  => $this->appeal,
+            'company_name'  => $this->company_name,
+            'job_offer_title'  => $this->job_offer_title,
         ]);;
     }
 }

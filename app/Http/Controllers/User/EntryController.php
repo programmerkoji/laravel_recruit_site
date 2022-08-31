@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\EntryFormRequest;
 use Illuminate\Http\Request;
 use App\Models\JobOffer;
-use App\Mail\ContactSendmail;
+use App\Mail\UserEntrymail;
+use App\Mail\ToCompanyMail;
 use Illuminate\Support\Facades\Mail;
 
 class EntryController extends Controller
@@ -37,8 +38,9 @@ class EntryController extends Controller
         if($action !== 'submit') {
             return redirect()->route('user.entry', ['job_offer' => $jobOfferInfo->id])->withInput($inputs);
         } else {
-            //入力されたメールアドレスにメールを送信
-            Mail::to($inputs['email'])->send(new ContactSendmail($inputs));
+            Mail::to($inputs['email'])->send(new UserEntrymail($inputs, $jobOfferInfo));
+            Mail::to($jobOfferInfo->company->email)->send(new ToCompanyMail($inputs, $jobOfferInfo));
+
             //再送信を防ぐためにトークンを再発行
             $request->session()->regenerateToken();
 
