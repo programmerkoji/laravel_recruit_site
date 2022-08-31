@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>WEB人 | WEB制作専門の求人サイト</title>
+    <title>@yield('title')</title>
     <meta name="description" content="Web制作専門の求人サイト。Webで活躍できる人材になりたいというあなたも想いを応援します。">
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -25,5 +25,6 @@
 
     <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
+    @yield('script')
 </body>
 </html>

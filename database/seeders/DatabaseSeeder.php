@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Company;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,5 +24,6 @@ class DatabaseSeeder extends Seeder
             ImageSeeder::class,
             UserSeeder::class,
         ]);
+        // Company::factory(100)->create();
     }
 }

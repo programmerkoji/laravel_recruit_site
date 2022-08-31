@@ -220,6 +220,12 @@ common
     .ly_lower {
         padding-top: 60px;
     }
+    .el_lower_headTtl > span {
+        font-size: 24px;
+    }
+    .el_lower_headTtl::after {
+        font-size: 14px;
+    }
 }
 /************************
 header
@@ -492,6 +498,35 @@ footer
     right: 8px;
     transform: translateY(-50%) rotate(45deg);
 }
+
+/* ページネーション */
+.bl_pagination {
+    margin-top: 32px;
+}
+.bl_pagination_list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.bl_pagination_list > li {
+    font-size: 16px;
+    font-weight: bold;
+    background: #eee;
+    border-radius: 2px;
+}
+.bl_pagination_list > li > a,
+.bl_pagination_list > li > span {
+    width: 24px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bl_pagination_list .active {
+    background: #4d5fc3;
+    color: #fff;
+}
 @media screen and (max-width: 767px) {
     .bl_archive_ttl {
         font-size: 18px;
@@ -555,6 +590,35 @@ aside
 .bl_search_item .text {
     width: 100%;
     font-weight: bold;
+}
+.accordion_toggle {
+    position: relative;
+    padding-left: 24px;
+    cursor: pointer;
+}
+.accordion_toggle::before,
+.accordion_toggle::after {
+    content: "";
+    background: #444;
+    width: 16px;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.accordion_toggle::after {
+    opacity: 1;
+    transform: translateY(-50%) rotate(90deg);
+}
+.accordion_toggle.is_active::before {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.accordion_toggle.is_active::after {
+    transform: translateY(-50%) rotate(180deg);
+    transition: transform 0.3s ease;
 }
 .bl_checkbox_item > label {
     cursor: pointer;
@@ -831,7 +895,7 @@ aside
     flex: 1;
     padding: 16px 8px 16px 16px;
 }
-@media screen and (max-width : 750px){
+@media screen and (max-width : 767px){
     .bl_detail_dttl {
         flex: 100%;
         border-right: none;
@@ -839,5 +903,217 @@ aside
     }
     .bl_detail_ddata {
         flex: 100%;
+    }
+}
+
+/************************
+応募フォーム
+*************************/
+.bl_entry {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 0 64px;
+}
+.bl_companyToEntry {
+    margin-bottom: 24px;
+}
+.bl_companyToEntry_ttl {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fcfcfc;
+    background: #4d5fc3;
+    border-radius: 4px 4px 0 0;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bl_companyToEntry_ddata {
+    border: 1px solid #b3b3b3;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.bl_companyToEntry_ddata .job_offer_ttl {
+    font-size: 16px;
+    font-weight: bold;
+}
+.bl_form {
+    padding: 40px;
+    background: #eee;
+}
+.bl_form_item {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.bl_form_item:not(:first-of-type) {
+    margin-top: 24px;
+}
+.bl_form_ttl {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.bl_form_ttl.el_require::after {
+    content: "必須";
+    font-size: 12px;
+    background: #E65032;
+    color: #fcfcfc;
+    padding: 0 4px;
+    position: absolute;
+    top: 50%;
+    right: 32px;
+    transform: translateY(-50%);
+}
+.bl_form_input {
+    width: 70%;
+    height: 40px;
+    border: 1px solid #b3b3b3;
+    background: #fcfcfc;
+    border-radius: 4px;
+    padding: 0 16px;
+}
+.bl_form_textarea {
+    width: 70%;
+    height: 240px;
+    border: 1px solid #b3b3b3;
+    background: #fcfcfc;
+    border-radius: 4px;
+    padding: 16px;
+    resize: none;
+}
+.bl_radioWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.bl_radioWrapper > label {
+    cursor: pointer;
+}
+.bl_radio + span {
+    position: relative;
+    padding-left: 32px;
+}
+.bl_radio + span::before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid #b3b3b3;
+    background: #fcfcfc;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+.bl_radio + span::after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background: #4d5fc3;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 6px;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.bl_radio:checked + span::after {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+.bl_form_btn {
+    max-width: 240px;
+    width: 100%;
+    height: 48px;
+    background: #4d5fc3;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fcfcfc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px auto 0;
+}
+.el_validationTxt {
+    width: 100%;
+    padding-left: 30%;
+    display: block;
+    color: #E65032;
+}
+
+/* 確認画面 */
+.bl_confirmData {
+    width: 70%;
+}
+.confirm .bl_form_btnWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+.confirm .bl_form_btn {
+    margin: 0;
+}
+.confirm .bl_form_btn.back {
+    width: 120px;
+    background: #b3b3b3;
+    color: #444;
+}
+
+/* サンクス画面 */
+.bl_thanks_ttl {
+    margin-bottom: 16px;
+}
+.bl_thanks_txt {
+    margin-bottom: 32px;
+}
+@media screen and (max-width : 767px){
+    .bl_companyToEntry_ttl {
+        font-size: 16px;
+        min-height: 40px;
+    }
+    .bl_companyToEntry_ddata {
+        padding: 16px;
+    }
+    .bl_companyToEntry_ddata .job_offer_ttl {
+        font-size: 14px;
+    }
+    .bl_form {
+        padding: 32px 16px;
+    }
+    .bl_form_item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .bl_form_ttl {
+        width: 100%;
+    }
+    .bl_form_input,
+    .bl_form_textarea {
+        width: 100%;
+    }
+    .bl_form_ttl.el_require::after {
+        right: 0;
+    }
+    .bl_form_btn {
+        margin-top: 24px;
+    }
+    .bl_confirmData {
+        width: 100%;
+    }
+    .confirm .bl_form_btn {
+        width: calc(70% - 16px);
+    }
+    .confirm .bl_form_btn.back {
+        width: 30%;
     }
 }

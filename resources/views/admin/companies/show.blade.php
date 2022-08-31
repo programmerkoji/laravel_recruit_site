@@ -33,16 +33,6 @@
             </li>
             <li class="p-4">
                 <dl class="flex items-center">
-                    <dt class="w-1/4 pl-1 font-bold">掲載状況</dt>
-                @if ($companyInfo->is_publish)
-                    <dd class="flex-auto">掲載中</dd>
-                @else
-                    <dd class="flex-auto">非掲載</dd>
-                @endif
-                </dl>
-            </li>
-            <li class="p-4">
-                <dl class="flex items-center">
                     <dt class="w-1/4 pl-1 font-bold">代表者名</dt>
                     <dd class="flex-auto">{{ $companyInfo->ceo_name }}</dd>
                 </dl>

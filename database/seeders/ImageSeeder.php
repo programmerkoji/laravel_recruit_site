@@ -30,6 +30,16 @@ class ImageSeeder extends Seeder
                 'file_name' => 'jobImages/sample3.jpg',
                 'title' => '求人3の画像',
             ],
+            [
+                'job_offer_id' => 4,
+                'file_name' => 'jobImages/sample4.jpg',
+                'title' => '求人4の画像',
+            ],
+            [
+                'job_offer_id' => 5,
+                'file_name' => 'jobImages/sample5.jpg',
+                'title' => '求人5の画像',
+            ],
         ]);
     }
 }

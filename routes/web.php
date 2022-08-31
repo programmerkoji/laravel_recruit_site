@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\User\JobOffersController;
 use App\Http\Controllers\User\BookmarkController;
+use App\Http\Controllers\User\EntryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,13 @@ Route::middleware('auth:users')->group(function() {
         ->name('bookmark.store');
     Route::delete('/job_offers/{job_offer}/unbookmark', [BookmarkController::class, 'destroy'])
         ->name('bookmark.destroy');
+
+    Route::get('/entry/{job_offer}', [EntryController::class, 'index'])
+        ->name('entry');
+    Route::post('/entry/confirm/{job_offer}', [EntryController::class, 'confirm'])
+        ->name('confirm');
+    Route::post('/entry/thanks/{job_offer}', [EntryController::class, 'send'])
+        ->name('thanks');
 });
 
 // Route::get('/', function () {

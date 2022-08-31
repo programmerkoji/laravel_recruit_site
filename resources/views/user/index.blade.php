@@ -1,5 +1,6 @@
 @extends('user.layout.common')
 
+@section('title')WEB人「WEB制作専門の求人サイト」@endsection
 @section('content')
     <div>
         <div class="bl_mv">
@@ -17,4 +18,13 @@
         </div>
         <!-- /.ly_cont -->
     </div>
+@endsection
+@section('script')
+<script>
+    $('.bl_checkbox').hide();
+    $('.accordion_toggle').on('click', function() {
+        $(this).next().stop().slideToggle();
+        $(this).toggleClass('is_active');
+    });
+</script>
 @endsection

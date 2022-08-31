@@ -1,5 +1,6 @@
 @extends('user.layout.common')
 
+@section('title')WEB人「WEB制作専門の求人サイト」@endsection
 @section('content')
     <div class="ly_lower">
         <div class="bl_breadCrumbs">
@@ -83,7 +84,9 @@
                 <!-- aside -->
                 <aside class="ly_aside">
                     <ul class="bl_cta">
-                        <li class="bl_cta_item"><a href="" class="bl_cta_btn apply">この求人に応募</a></li>
+                        <li class="bl_cta_item">
+                            <a href="{{ route('user.entry', ['job_offer' => $jobOfferInfo->id]) }}" class="bl_cta_btn apply">この求人に応募</a>
+                        </li>
                         <li class="bl_cta_item">
                             @if (auth('users')->user())
                                 @if (!Auth::user()->is_bookmark($jobOfferInfo->id))

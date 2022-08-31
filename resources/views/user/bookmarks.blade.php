@@ -1,5 +1,6 @@
 @extends('user.layout.common')
 
+@section('title')お気に入りリスト | WEB人「WEB制作専門の求人サイト」@endsection
 @section('content')
     <div class="ly_lower">
 
@@ -31,4 +32,13 @@
         <!-- /.ly_cont -->
     </div>
     <!-- /.ly_lower -->
+@endsection
+@section('script')
+<script>
+    $('.bl_checkbox').hide();
+    $('.accordion_toggle').on('click', function() {
+        $(this).next().stop().slideToggle();
+        $(this).toggleClass('is_active');
+    });
+</script>
 @endsection

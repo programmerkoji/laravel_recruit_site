@@ -77,22 +77,23 @@
     </ul>
     <!-- /.bl_archive_list -->
     @endif
+    {{ $job_offers->links('vendor.pagination.user_pagination') }}
 </main>
 <!-- aside -->
 <aside class="ly_aside">
     <div class="ly_aside_inner bl_aside">
-        <form action="{{ route('user.index') }}" method="get" class="bl_sort">
+        {{-- <form action="{{ route('user.index') }}" method="get" class="bl_sort">
             <select name="sort" id="sort">
                 <option value="1" @if(\Request::get('sort') === '1') selected @endif>新着順</option>
                 <option value="2" @if(\Request::get('sort') === '2') selected @endif>古い順</option>
             </select>
             <button type="submit">並び替える</button>
-        </form>
+        </form> --}}
         <!-- /.bl_sort -->
         <form action="{{ route('user.index') }}" method="get" class="bl_search">
             <ul class="bl_search_inner">
                 <li class="bl_search_item">
-                    <p class="text">エリアで検索</p>
+                    <p class="text accordion_toggle">エリアで検索</p>
                     <ul class="bl_checkbox">
                         @foreach ($job_areas as $job_area)
                         <li class="bl_checkbox_item">
@@ -106,7 +107,7 @@
                     <!-- /.bl_checkbox -->
                 </li>
                 <li class="bl_search_item job_categories">
-                    <p class="text">職種で検索</p>
+                    <p class="text accordion_toggle">職種で検索</p>
                     <ul class="bl_checkbox">
                         @foreach ($job_categories as $job_category)
                         <li class="bl_checkbox_item">
