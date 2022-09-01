@@ -14,7 +14,7 @@ class JobOffersController extends Controller
         $areas = $request->area;
         $categories = $request->category;
         $keyword = $request->keyword;
-        $sort = $request->sort;
+        // $sort = $request->sort;
 
         $query = JobOffer::with(['company', 'job_category', 'job_area', 'image'])->postingPeriod()->orderBy('posting_start', 'desc');
 

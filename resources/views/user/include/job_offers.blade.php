@@ -1,6 +1,17 @@
 <!-- main -->
 <main class="ly_cont_main bl_archive">
-    <p class="el_hitNum"><span class="txt_lg txt_bold">新宿区</span>&nbsp;で検索した結果：20件中&nbsp;1～10件を表示</p>
+    <div class="bl_archive_head">
+        @if (!$job_offers->total() == 0)
+        <p class="el_hitNum">
+            <span><span class="txt_lg txt_bold">{{ $job_offers->total() }}件</span>&nbsp;がヒット！</span>
+            <span>{{ $job_offers->firstItem() }}〜{{ $job_offers->lastItem() }}件を表示</span>
+        </p>
+        @else
+        <p>求人は見つかりませんでした…</p>
+        <a href="{{ route('user.index') }}" class="back">求人を探す</a>
+        @endif
+    </div>
+
     @if (isset($job_offers))
     <ul class="bl_archive_list">
         @foreach ($job_offers as $job_offer)
@@ -82,14 +93,6 @@
 <!-- aside -->
 <aside class="ly_aside">
     <div class="ly_aside_inner bl_aside">
-        {{-- <form action="{{ route('user.index') }}" method="get" class="bl_sort">
-            <select name="sort" id="sort">
-                <option value="1" @if(\Request::get('sort') === '1') selected @endif>新着順</option>
-                <option value="2" @if(\Request::get('sort') === '2') selected @endif>古い順</option>
-            </select>
-            <button type="submit">並び替える</button>
-        </form> --}}
-        <!-- /.bl_sort -->
         <form action="{{ route('user.index') }}" method="get" class="bl_search">
             <ul class="bl_search_inner">
                 <li class="bl_search_item">
