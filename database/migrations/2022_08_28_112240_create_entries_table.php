@@ -15,6 +15,15 @@ class CreateEntriesTable extends Migration
     {
         Schema::create('entries', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('kana');
+            $table->string('email');
+            $table->string('tel');
+            $table->string('address');
+            $table->string('gender');
+            $table->string('birth');
+            $table->text('career');
+            $table->text('appeal');
             $table->timestamps();
         });
     }

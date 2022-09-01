@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\JobOffer;
 use App\Mail\UserEntrymail;
 use App\Mail\ToCompanyMail;
+use App\Models\Entry;
 use Illuminate\Support\Facades\Mail;
 
 class EntryController extends Controller
@@ -41,11 +42,12 @@ class EntryController extends Controller
             Mail::to($inputs['email'])->send(new UserEntrymail($inputs, $jobOfferInfo));
             Mail::to($jobOfferInfo->company->email)->send(new ToCompanyMail($inputs, $jobOfferInfo));
 
+            Entry::create($request->all());
+
             //再送信を防ぐためにトークンを再発行
             $request->session()->regenerateToken();
 
             return view('user.thanks', compact('jobOfferInfo'));
         }
-        // return view('user.thanks');
     }
 }

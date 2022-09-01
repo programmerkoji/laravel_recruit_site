@@ -37,7 +37,7 @@
                     @csrf
                     <div class="bl_form_item">
                         <label for="name" class="bl_form_ttl el_require">氏名</label>
-                        <input type="text" name="name" id="name" value="{{ old('name') }}" class="bl_form_input" placeholder="氏名を入力してください">
+                        <input type="text" name="name" id="name" value="{{ old('name') }}" class="bl_form_input" placeholder="例）山田 太郎">
                         @error('name')
                         <span class="el_validationTxt">{{ $message }}</span>
                         @enderror
@@ -45,7 +45,7 @@
                     <!-- /.bl_form_item -->
                     <div class="bl_form_item">
                         <label for="kana" class="bl_form_ttl el_require">ふりがな</label>
-                        <input type="text" name="kana" id="kana" value="{{ old('kana') }}" class="bl_form_input" placeholder="ふりがなを入力してください">
+                        <input type="text" name="kana" id="kana" value="{{ old('kana') }}" class="bl_form_input" placeholder="例）やまだ たろう">
                         @error('kana')
                         <span class="el_validationTxt">{{ $message }}</span>
                         @enderror
@@ -53,7 +53,7 @@
                     <!-- /.bl_form_item -->
                     <div class="bl_form_item">
                         <label for="email" class="bl_form_ttl el_require">メールアドレス</label>
-                        <input type="email" name="email" id="email" value="{{ old('email') }}" class="bl_form_input" placeholder="メールアドレスを入力してください">
+                        <input type="email" name="email" id="email" value="{{ old('email') }}" class="bl_form_input" placeholder="例）user@test.com">
                         @error('email')
                         <span class="el_validationTxt">{{ $message }}</span>
                         @enderror
@@ -61,7 +61,7 @@
                     <!-- /.bl_form_item -->
                     <div class="bl_form_item">
                         <label for="tel" class="bl_form_ttl el_require">電話番号</label>
-                        <input type="tel" name="tel" id="tel" value="{{ old('tel') }}" class="bl_form_input" placeholder="電話番号を入力してください">
+                        <input type="tel" name="tel" id="tel" value="{{ old('tel') }}" class="bl_form_input" placeholder="例）090-1234-5678">
                         @error('tel')
                         <span class="el_validationTxt">{{ $message }}</span>
                         @enderror
@@ -69,7 +69,7 @@
                     <!-- /.bl_form_item -->
                     <div class="bl_form_item">
                         <label for="address" class="bl_form_ttl el_require">住所</label>
-                        <input type="text" name="address" id="address" value="{{ old('address') }}" class="bl_form_input" placeholder="住所を入力してください">
+                        <input type="text" name="address" id="address" value="{{ old('address') }}" class="bl_form_input" placeholder="例）123-4567 東京都〇〇区〇〇5-10">
                         @error('address')
                         <span class="el_validationTxt">{{ $message }}</span>
                         @enderror
@@ -95,7 +95,7 @@
                     <!-- /.bl_form_item -->
                     <div class="bl_form_item">
                         <label for="birth" class="bl_form_ttl el_require">生年月日</label>
-                        <input type="text" name="birth" id="birth" value="{{ old('birth') }}" class="bl_form_input" placeholder="生年月日を入力してください">
+                        <input type="text" name="birth" id="birth" value="{{ old('birth') }}" class="bl_form_input" placeholder="例）1990/01/01">
                         @error('birth')
                         <span class="el_validationTxt">{{ $message }}</span>
                         @enderror
