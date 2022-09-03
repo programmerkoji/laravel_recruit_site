@@ -23,7 +23,7 @@
 <script>
     $('.bl_checkbox').hide();
     $('.accordion_toggle').on('click', function() {
-        $(this).next().stop().slideToggle();
+        $(this).nextAll('.bl_checkbox').stop().slideToggle();
         $(this).toggleClass('is_active');
     });
 </script>

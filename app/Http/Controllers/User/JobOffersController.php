@@ -4,6 +4,8 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\JobOffer;
+use App\Models\JobArea;
+use App\Models\JobCategory;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -14,7 +16,9 @@ class JobOffersController extends Controller
         $areas = $request->area;
         $categories = $request->category;
         $keyword = $request->keyword;
-        // $sort = $request->sort;
+
+        $areaDatas = JobArea::whereIn('id', $areas ?? [])->get();
+        $categoryDatas = JobCategory::whereIn('id', $categories ?? [])->get();
 
         $query = JobOffer::with(['company', 'job_category', 'job_area', 'image'])->postingPeriod()->orderBy('posting_start', 'desc');
 
@@ -40,7 +44,7 @@ class JobOffersController extends Controller
 
         $job_categories = JobOffer::getCategories();
 
-        return view('user.index', compact('job_offers', 'keyword', 'job_areas', 'job_categories'));
+        return view('user.index', compact('job_offers', 'keyword', 'job_areas', 'job_categories', 'areaDatas', 'categoryDatas'));
     }
 
     public function show($id)

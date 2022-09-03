@@ -98,7 +98,7 @@
                                 <form action="{{ route('user.bookmark.destroy', $jobOfferInfo) }}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="bl_cta_btn favorite"><i class="fa-regular fa-star"></i>お気に入りを解除</button>
+                                    <button type="submit" class="bl_cta_btn favorite remove"><i class="fa-regular fa-star"></i>お気に入りを解除</button>
                                 </form>
                                 @endif
                             @else

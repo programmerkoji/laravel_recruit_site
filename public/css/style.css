@@ -492,6 +492,11 @@ footer
     border-radius: 4px;
     text-align: center;
 }
+.bl_archive_btn.favorite.remove {
+    border: none;
+    background: #EB5C1E;
+    color: #fff;
+}
 .bl_archive_btnItem .favorite {
     border: 1px solid #b3b3b3;
     background: #fcfcfc;
@@ -640,19 +645,19 @@ aside
 .bl_checkbox_item > label {
     cursor: pointer;
 }
-.bl_search_item .tagWrapper {
+.el_searchTag {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 4px 8px;
 }
-.bl_search_item .tag {
+.el_searchTag > li {
     font-size: 12px;
     padding: 0 8px;
     background: #eee;
     border-radius: 4px;
 }
-.bl_search_item .tag > i {
+.el_searchTag > li > i {
     margin-right: 2px;
 }
 
@@ -774,6 +779,11 @@ aside
 }
 .bl_cta_btn .fa-star {
     margin-right: 8px;
+}
+.bl_cta_btn.favorite.remove {
+    background: #EB5C1E;
+    color: #fff;
+    border: none;
 }
 /* 会社情報 */
 .bl_companyInfo {

@@ -17,7 +17,6 @@
         @foreach ($job_offers as $job_offer)
             <li class="bl_archive_item">
                 <div class="bl_archive_inner">
-                    <!-- /.bl_archive_inner -->
                     <h3 class="bl_archive_ttl">
                         <span class="company_name">{{ $job_offer->company->name }}</span>
                         <a href="{{ route('user.show', ['job_offer' => $job_offer->id]) }}" class="word">{{ $job_offer->title }}</a>
@@ -68,7 +67,7 @@
                             <form action="{{ route('user.bookmark.destroy', $job_offer) }}" method="post">
                                 @csrf
                                 @method('delete')
-                                <button type="submit" class="bl_archive_btn favorite">お気に入りを解除</button>
+                                <button type="submit" class="bl_archive_btn favorite remove">お気に入りを解除</button>
                             </form>
                             @endif
                         </li>
@@ -97,6 +96,13 @@
             <ul class="bl_search_inner">
                 <li class="bl_search_item">
                     <p class="text accordion_toggle">エリアで検索</p>
+                    @if (isset($areaDatas))
+                    <ul class="el_searchTag">
+                        @foreach ($areaDatas as $areaData)
+                            <li><i class="fa-solid fa-tag"></i>{{ $areaData->area_name }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
                     <ul class="bl_checkbox">
                         @foreach ($job_areas as $job_area)
                         <li class="bl_checkbox_item">
@@ -106,11 +112,18 @@
                             </label>
                         </li>
                         @endforeach
-                    </ul>
+                    </ul    >
                     <!-- /.bl_checkbox -->
                 </li>
                 <li class="bl_search_item job_categories">
                     <p class="text accordion_toggle">職種で検索</p>
+                    @if (isset($categoryDatas))
+                    <ul class="el_searchTag">
+                        @foreach ($categoryDatas as $categoryData)
+                            <li><i class="fa-solid fa-tag"></i>{{ $categoryData->category_name }}</li>
+                        @endforeach
+                    </ul>
+                    @endif
                     <ul class="bl_checkbox">
                         @foreach ($job_categories as $job_category)
                         <li class="bl_checkbox_item">
@@ -126,7 +139,8 @@
                 <li class="bl_search_item">
                     <div class="bl_keywordSearch">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="search" name="keyword" value="@if(isset($keyword)){{ $keyword }}@endif" placeholder="キーワードで検索">
+                        {{-- <input type="search" name="keyword" value="@if(isset($keyword)){{ $keyword }}@endif" placeholder="キーワードで検索"> --}}
+                        <input type="search" name="keyword" value="{{ Request::get('keyword') }}" placeholder="キーワードで検索">
                     </div>
                     <!-- /.bl_keywordSearch -->
                 </li>

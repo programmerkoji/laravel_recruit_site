@@ -22,8 +22,8 @@ class CreateEntriesTable extends Migration
             $table->string('address');
             $table->string('gender');
             $table->string('birth');
-            $table->text('career');
-            $table->text('appeal');
+            $table->text('career')->nullable();
+            $table->text('appeal')->nullable();
             $table->timestamps();
         });
     }
