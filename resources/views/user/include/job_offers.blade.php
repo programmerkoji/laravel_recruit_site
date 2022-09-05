@@ -117,7 +117,7 @@
                 </li>
                 <li class="bl_search_item job_categories">
                     <p class="text accordion_toggle">職種で検索</p>
-                    @if (!$areaDatas->isEmpty())
+                    @if (!$categoryDatas->isEmpty())
                     <ul class="el_searchTag">
                         @foreach ($categoryDatas as $categoryData)
                             <li><i class="fa-solid fa-tag"></i>{{ $categoryData->category_name }}</li>
