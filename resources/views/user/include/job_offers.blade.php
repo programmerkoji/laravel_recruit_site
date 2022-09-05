@@ -96,7 +96,7 @@
             <ul class="bl_search_inner">
                 <li class="bl_search_item">
                     <p class="text accordion_toggle">エリアで検索</p>
-                    @if (isset($areaDatas))
+                    @if (!$areaDatas->isEmpty())
                     <ul class="el_searchTag">
                         @foreach ($areaDatas as $areaData)
                             <li><i class="fa-solid fa-tag"></i>{{ $areaData->area_name }}</li>
@@ -117,7 +117,7 @@
                 </li>
                 <li class="bl_search_item job_categories">
                     <p class="text accordion_toggle">職種で検索</p>
-                    @if (isset($categoryDatas))
+                    @if (!$areaDatas->isEmpty())
                     <ul class="el_searchTag">
                         @foreach ($categoryDatas as $categoryData)
                             <li><i class="fa-solid fa-tag"></i>{{ $categoryData->category_name }}</li>

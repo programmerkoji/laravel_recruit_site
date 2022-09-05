@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\EntryFormRequest;
 use Illuminate\Http\Request;
 use App\Models\JobOffer;
-use App\Mail\UserEntrymail;
+use App\Mail\UserEntryMail;
 use App\Mail\ToCompanyMail;
 use App\Models\Entry;
 use Illuminate\Support\Facades\Mail;
@@ -39,7 +39,7 @@ class EntryController extends Controller
         if($action !== 'submit') {
             return redirect()->route('user.entry', ['job_offer' => $jobOfferInfo->id])->withInput($inputs);
         } else {
-            Mail::to($inputs['email'])->send(new UserEntrymail($inputs, $jobOfferInfo));
+            Mail::to($inputs['email'])->send(new UserEntryMail($inputs, $jobOfferInfo));
             Mail::to($jobOfferInfo->company->email)->send(new ToCompanyMail($inputs, $jobOfferInfo));
 
             Entry::create($request->all());
