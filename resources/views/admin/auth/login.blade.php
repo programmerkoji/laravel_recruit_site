@@ -14,11 +14,19 @@
 
         <p class="mb-4 text-center">管理者用</p>
 
-        <form method="POST" action="{{ route('admin.login') }}"> 
+        <div class="font-medium text-sm text-gray-700 bg-gray-100 p-4">
+            <p class="font-medium text-sm text-gray-700 mb-3">●テスト用ユーザー</p>
+            <dl>
+                <div class="flex"><dt>メールアドレス：</dt><dd>test@test.com</dd></div>
+                <div class="flex"><dt>パスワード：</dt><dd>password1234</dd></div>
+            </dl>
+        </div>
+
+        <form method="POST" action="{{ route('admin.login') }}">
             @csrf
 
             <!-- Email Address -->
-            <div>
+            <div class="mt-4">
                 <x-label for="email" :value="__('Email')" />
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
