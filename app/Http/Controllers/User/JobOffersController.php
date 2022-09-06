@@ -56,12 +56,18 @@ class JobOffersController extends Controller
 
     public function bookmark_job_offers(Request $request)
     {
+        $areas = $request->area;
+        $categories = $request->category;
+
+        $areaDatas = JobArea::whereIn('id', $areas ?? [])->get();
+        $categoryDatas = JobCategory::whereIn('id', $categories ?? [])->get();
+
         $job_offers = \Auth::user()->bookmark_job_offers()->postingPeriod()->orderBy('posting_start', 'desc')->paginate(10);
 
         $job_areas = JobOffer::getAreas();
 
         $job_categories = JobOffer::getCategories();
 
-        return view('user.bookmarks', compact('job_offers', 'job_areas', 'job_categories'));
+        return view('user.bookmarks', compact('job_offers', 'job_areas', 'job_categories', 'areaDatas', 'categoryDatas'));
     }
 }
