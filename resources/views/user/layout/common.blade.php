@@ -12,6 +12,10 @@
     <meta name="description" content="Web制作専門の求人サイト。Webで活躍できる人材になりたいというあなたも想いを応援します。">
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
+    
     <script src="https://kit.fontawesome.com/77a829ded7.js" crossorigin="anonymous"></script>
 </head>
 <body>

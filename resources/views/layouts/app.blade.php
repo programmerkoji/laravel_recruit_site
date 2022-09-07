@@ -15,6 +15,9 @@
         {{-- toastr --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
+        <!-- Favicon -->
+        <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
+
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         {{-- toastr --}}
