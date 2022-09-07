@@ -12,7 +12,7 @@
                 <label class="flex items-center">
                     <span class="w-1/4 pl-1 font-bold">掲載開始日</span>
                     <span class="flex-auto">
-                        <input type="text" name="posting_start" id="publish_date" value="{{ old('posting_start') }}" class="w-1/3 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        <input type="text" name="posting_start" id="publish_date" value="{{ old('posting_start') }}" class="md:w-1/3 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         @error('posting_start')
                         <span class="block text-rose-700 mt-2">{{ $message }}</span>
                         @enderror
@@ -23,7 +23,7 @@
                 <label class="flex items-center">
                     <span class="w-1/4 pl-1 font-bold">掲載終了日</span>
                     <span class="flex-auto">
-                        <input type="text" name="posting_end" id="publish_date" value="{{ old('posting_end') }}" class="w-1/3 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        <input type="text" name="posting_end" id="publish_date" value="{{ old('posting_end') }}" class="md:w-1/3 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         @error('posting_end')
                         <span class="block text-rose-700 mt-2">{{ $message }}</span>
                         @enderror

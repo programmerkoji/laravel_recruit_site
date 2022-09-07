@@ -23,39 +23,39 @@
                 </form>
             </div>
             <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-                <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                <div class="inline-block min-w-full shadow rounded-lg overflow-x-auto">
                     <table class="min-w-full leading-normal">
                         <thead>
                             <tr>
-                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal">
+                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal whitespace-nowrap">
                                     求人名
                                 </th>
-                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal">
+                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal whitespace-nowrap">
                                     掲載企業名
                                 </th>
-                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal">
+                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal whitespace-nowrap">
                                     掲載期間
                                 </th>
-                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal"></th>
+                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal whitespace-nowrap"></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($job_offers as $job_offer)
                             <tr>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm whitespace-nowrap">
                                     <p class="text-gray-900 whitespace-no-wrap">
                                         {{ $job_offer->title }}
                                     </p>
                                 </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm whitespace-nowrap">
                                     <p class="text-gray-900 whitespace-no-wrap">
                                         {{ $job_offer->company->name }}
                                     </p>
                                 </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm whitespace-nowrap">
                                     {{ $job_offer->posting_start->format('Y/m/d') }} 〜 {{ $job_offer->posting_end->format('Y/m/d') }}
                                 </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm whitespace-nowrap">
                                     <div class="flex items-center justify-center gap-4">
                                         <a href="{{ route('admin.job_offers.show', ['job_offer' => $job_offer->id]) }}" class="py-1 px-2 border border-indigo-600 rounded-full text-indigo-600 hover:text-indigo-900">詳細</a>
                                         <a href="{{ route('admin.job_offers.edit', ['job_offer' => $job_offer->id]) }}" class="py-1 px-2 border border-green-600 rounded-full text-green-600 hover:text-green-900">編集</a>

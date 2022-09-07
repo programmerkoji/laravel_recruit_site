@@ -21,43 +21,43 @@
                 </form>
             </div>
             <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-                <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                <div class="inline-block min-w-full shadow rounded-lg overflow-x-auto">
                     <table class="min-w-full leading-normal">
                         <thead>
                             <tr>
-                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal">
+                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal whitespace-nowrap">
                                     企業名
                                 </th>
-                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal">
+                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal whitespace-nowrap">
                                     住所
                                 </th>
-                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal">
+                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal whitespace-nowrap">
                                     担当者名
                                 </th>
-                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal"></th>
+                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm font-normal whitespace-nowrap"></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($companies as $company)
                             <tr>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm whitespace-nowrap">
                                     <div class="flex items-center">
                                         <p class="text-gray-900 whitespace-no-wrap">
                                             {{ $company->name }}
                                         </p>
                                     </div>
                                 </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm whitespace-nowrap">
                                     <p class="text-gray-900 whitespace-no-wrap">
                                         {{ $company->address }}
                                     </p>
                                 </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm whitespace-nowrap">
                                     <p class="text-gray-900 whitespace-no-wrap">
                                         {{ $company->stuff_name }}
                                     </p>
                                 </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm whitespace-nowrap">
                                     <div class="flex items-center justify-center gap-4">
                                         <a href="{{ route('admin.companies.show', ['company' => $company->id]) }}" class="py-1 px-2 border border-indigo-600 rounded-full text-indigo-600 hover:text-indigo-900">詳細</a>
                                         <a href="{{ route('admin.companies.edit', ['company' => $company->id]) }}" class="py-1 px-2 border border-green-600 rounded-full text-green-600 hover:text-green-900">編集</a>
