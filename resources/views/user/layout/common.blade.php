@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title')</title>
-    <meta name="description" content="Web制作専門の求人サイト。Webで活躍できる人材になりたいというあなたも想いを応援します。">
+    <meta name="description" content="Web制作専門の求人サイト。Webで活躍できる人材になりたいというあなたの想いを応援します。">
     <meta name="robots" content="noindex">
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">

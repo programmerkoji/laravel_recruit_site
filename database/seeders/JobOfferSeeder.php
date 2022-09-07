@@ -92,7 +92,7 @@ class JobOfferSeeder extends Seeder
                 'created_at' => '2022/08/01 11:11:11',
             ],
             [
-                'company_id' => 5,
+                'company_id' => 1,
                 'job_category_id' => 4,
                 'job_area_id' => 2,
                 'posting_start' => '2022/08/20',
@@ -111,7 +111,7 @@ class JobOfferSeeder extends Seeder
                 'created_at' => '2022/08/19 11:11:11',
             ],
             [
-                'company_id' => 4,
+                'company_id' => 2,
                 'job_category_id' => 5,
                 'job_area_id' => 3,
                 'posting_start' => '2022/08/20',
@@ -206,7 +206,7 @@ class JobOfferSeeder extends Seeder
                 'created_at' => '2022/08/01 11:11:11',
             ],
             [
-                'company_id' => 5,
+                'company_id' => 1,
                 'job_category_id' => 4,
                 'job_area_id' => 9,
                 'posting_start' => '2022/08/20',
@@ -225,7 +225,7 @@ class JobOfferSeeder extends Seeder
                 'created_at' => '2022/08/19 11:11:11',
             ],
             [
-                'company_id' => 4,
+                'company_id' => 2,
                 'job_category_id' => 5,
                 'job_area_id' => 10,
                 'posting_start' => '2022/08/20',
@@ -263,7 +263,7 @@ class JobOfferSeeder extends Seeder
                 'created_at' => '2022/08/01 11:11:11',
             ],
             [
-                'company_id' => 2,
+                'company_id' => 1,
                 'job_category_id' => 2,
                 'job_area_id' => 12,
                 'posting_start' => '2022/08/26',
@@ -320,7 +320,7 @@ class JobOfferSeeder extends Seeder
                 'created_at' => '2022/08/01 11:11:11',
             ],
             [
-                'company_id' => 5,
+                'company_id' => 2,
                 'job_category_id' => 4,
                 'job_area_id' => 15,
                 'posting_start' => '2022/08/20',
@@ -339,7 +339,7 @@ class JobOfferSeeder extends Seeder
                 'created_at' => '2022/08/19 11:11:11',
             ],
             [
-                'company_id' => 4,
+                'company_id' => 1,
                 'job_category_id' => 5,
                 'job_area_id' => 16,
                 'posting_start' => '2022/08/20',
@@ -377,7 +377,7 @@ class JobOfferSeeder extends Seeder
                 'created_at' => '2022/08/01 11:11:11',
             ],
             [
-                'company_id' => 2,
+                'company_id' => 1,
                 'job_category_id' => 2,
                 'job_area_id' => 18,
                 'posting_start' => '2022/08/26',
@@ -434,7 +434,7 @@ class JobOfferSeeder extends Seeder
                 'created_at' => '2022/08/01 11:11:11',
             ],
             [
-                'company_id' => 5,
+                'company_id' => 1,
                 'job_category_id' => 4,
                 'job_area_id' => 21,
                 'posting_start' => '2022/08/20',
@@ -453,7 +453,7 @@ class JobOfferSeeder extends Seeder
                 'created_at' => '2022/08/19 11:11:11',
             ],
             [
-                'company_id' => 4,
+                'company_id' => 1,
                 'job_category_id' => 5,
                 'job_area_id' => 22,
                 'posting_start' => '2022/08/20',
@@ -472,7 +472,7 @@ class JobOfferSeeder extends Seeder
                 'created_at' => '2022/08/19 11:11:11',
             ],
             [
-                'company_id' => 2,
+                'company_id' => 1,
                 'job_category_id' => 2,
                 'job_area_id' => 18,
                 'posting_start' => '2022/08/26',
@@ -529,7 +529,7 @@ class JobOfferSeeder extends Seeder
                 'created_at' => '2022/08/01 11:11:11',
             ],
             [
-                'company_id' => 5,
+                'company_id' => 1,
                 'job_category_id' => 4,
                 'job_area_id' => 21,
                 'posting_start' => '2022/08/20',
@@ -548,7 +548,7 @@ class JobOfferSeeder extends Seeder
                 'created_at' => '2022/08/19 11:11:11',
             ],
             [
-                'company_id' => 4,
+                'company_id' => 1,
                 'job_category_id' => 5,
                 'job_area_id' => 23,
                 'posting_start' => '2022/08/20',
