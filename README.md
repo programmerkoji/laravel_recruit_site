@@ -50,6 +50,10 @@ Web制作の仕事専門の求人サイト。
     </tbody>
 </table>
 
+## 工夫したところ
+- EagerLoadingでN+1問題を解消
+- ローカルスコープやクラスへの切り分けにより、Controllerの肥大化を防止
+
 ## 使用技術
 - Laravel 8
 - Laravel Breeze
