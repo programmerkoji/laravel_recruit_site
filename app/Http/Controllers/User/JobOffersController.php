@@ -36,9 +36,16 @@ class JobOffersController extends Controller
             $query->where(function ($q) use($keyword) {
                 $q->where('job_content', 'like', '%' . $keyword . '%');
                 $q->orWhere('free_text', 'like', '%' . $keyword . '%');
+                $q->orWhere('title', 'like', '%' . $keyword . '%');
+            })->orWhereHas('company', function ($q) use ($keyword) {
+                $q->where('name', 'like', '%' . $keyword . '%');
+            })->orWhereHas('job_category', function ($q) use ($keyword) {
+                $q->where('category_name', 'like', '%' . $keyword . '%');
+            })->orWhereHas('job_area', function ($q) use ($keyword) {
+                $q->where('area_name', 'like', '%' . $keyword . '%');
             });
         }
-        $job_offers = $query->paginate(10);
+        $job_offers = $query->paginate(10)->withQueryString();
 
         $job_areas = JobOffer::getAreas();
 
