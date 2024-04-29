@@ -147,6 +147,7 @@
             </ul>
             <!-- /.bl_search_inner -->
             <button type="submit" class="bl_search_btn">検索する</button>
+            <button type="button" onclick="location.href='{{route('user.index')}}'" class="bl_search_btn__clear">クリア</button>
         </form>
     </div>
     <!-- /.ly_aside_inner -->
